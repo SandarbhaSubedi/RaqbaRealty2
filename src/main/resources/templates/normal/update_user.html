@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+ th:replace="~{normal/base::layout(~{::section})}">
+<head>
+    <meta charset="UTF-8" />
+    <title>This is profile view</title>
+</head>
+<body>
+<section>
+    <div class="container">
+    
+   <div class="card">
+   
+   <div class="card-body">
+   
+   <div class="container text-center" >
+   
+    
+         
+   
+   <img src="" style="height:200px; width:200px;" class="my_profile_picture" th:src="@{'/img/'+${user.imageUrl}}" alt="" />
+   
+   </div>
+   
+    <form action="#"
+         th:object="${user}"
+          enctype="multipart/form-data"
+         method="POST"
+         th:action="@{/user/process-updateuser}"
+         class="mt-2">
+         
+         <h1 class="text-center">User ID</h1>
+    <h1 class="text-center" th:text="${user.id}"></h1>
+         
+         
+       <!-- First Name -->
+       
+       <div class="input-group">
+       
+        <div class="input-group-prepend">
+        
+          <div class="input-group-text mr-3">
+          
+            name
+          
+          </div> 	
+        
+        </div>
+       
+             <input th:value="${user.name}" required type="text" id="firstName" name="name" 
+             placeholder="Enter Name Here" class="form-control">
+       </div>
+       
+       <!-- Second Name -->
+              <div class="input-group">
+       
+         <div class="input-group-prepend">
+        
+           <div class="input-group-text mr-3">
+          
+           email
+           </div> 	
+         
+          </div>
+       
+             <input th:value="${user.email}" required type="text" name="email" 
+             placeholder="Enter Your Email" class="form-control">
+         </div>
+       
+       
+              
+       <!-- Phone Field -->
+              <div class="input-group">
+       
+         <div class="input-group-prepend">
+        
+           <div class="input-group-text mr-3">
+          
+          about 
+           
+           </div> 	
+         
+          </div>
+       
+             <input th:value="${user.about}" required min="10" type="text" name="about" 
+             placeholder="Enter Phone Number" class="form-control">
+         </div>
+     
+         
+        
+          
+          <div class="container text-center">
+          <button Class="btn btn-outline-primary">Save User</button>
+          
+          </div>
+       
+       </form>
+       
+       </div>
+       
+       </div>
+       
+       </div>
+
+      
+
+    
+   </section>
+   </body>
+

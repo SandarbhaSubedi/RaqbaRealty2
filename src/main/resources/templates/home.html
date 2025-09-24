@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+     >
+     
+<head>
+    <meta charset="UTF-8" />
+    <title>Home Page</title>
+    <link rel="stylesheet" href="/CSS/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- FontAwesome CDN -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    
+    <script>
+    function showFullMessageHome(fullName, fullMessage) {
+        const modal = document.getElementById("reviewModalHome");
+        const modalOverlay = document.getElementById("modalOverlayHome");
+
+        // Ensure modal is found
+        console.log(modal, modalOverlay);
+        
+        // Update modal content
+        modal.querySelector(".review-modal-header-home").textContent = `Review by ${fullName}`;
+
+        // Format message in chunks of 10 words
+        const formattedMessage = fullMessage.split(' ').reduce((acc, word, idx) => {
+            return acc + word + ((idx + 1) % 10 === 0 ? "<br>" : " ");
+        }, "");
+
+        modal.querySelector(".review-modal-body-home").innerHTML = formattedMessage;
+        modal.style.display = "flex";
+        modalOverlay.style.display = "block";
+    }
+
+
+    function closeModalHome() {
+        const modal = document.getElementById("reviewModalHome");
+        const modalOverlay = document.getElementById("modalOverlayHome");
+        modal.style.display = "none";
+        modalOverlay.style.display = "none";
+    }
+    
+   
+ </script>
+
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark">
+            <!-- Logo -->
+            <a class="navbar-brand d-flex align-items-center" href="/">
+                <img src="/img/logo.png" alt="Logo" class="logo-img">
+            </a>
+
+            <!-- Toggle Button for Mobile View -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar Links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/" th:classappend="${page == 'home'} ? 'active' : ''">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about" th:classappend="${page == 'about'} ? 'active' : ''">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/contact}" th:classappend="${page == 'contact'} ? 'active' : ''">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/sell" th:classappend="${page == 'sell'} ? 'active' : ''">Sell</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/buy" th:classappend="${page == 'buy'} ? 'active' : ''">Buy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/rent" th:classappend="${page == 'rent'} ? 'active' : ''">Rent</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="/offplan" th:classappend="${page == 'offplan'} ? 'active' : ''">OffPlan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/properties}" th:classappend="${page == 'properties'} ? 'active' : ''">Properties</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/submitReview}" th:classappend="${page == 'submitReview'} ? 'active' : ''">Review</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+   
+  
+
+<div class="Homebody">
+
+    <!-- Video Section -->
+    <section class="Homevideo-container">
+        <video autoplay loop muted>
+            <source src="/videos/raqbahome.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+    </section>
+
+    <!-- Oval Section -->
+    <section class="Homeoval-container">
+        <div>
+            <img src="/img/logo.png" alt="Welcome to Real Estate Company">
+        </div>
+    </section>
+
+  <!-- Welcome Section -->
+<section class="Homewelcome-container">
+    <h2 class="Homewelcome-title">Welcome to Raqba Realty</h2>
+    
+    <div class="Homewelcome-content">
+        <img src="/img/sell.png" alt="Welcome Image" class="Homewelcome-image">
+        
+        <div class="Homewelcome-text">
+            <p>At Raqba Realty, we believe in turning dreams into reality by helping you find the perfect home or property investment.</p>
+            <p>Our team is dedicated to providing the best real estate services, ensuring a seamless and stress-free experience for our clients.</p>
+        </div>
+
+        <img src="/img/sell.png" alt="Welcome Image" class="Homewelcome-image">
+    </div>
+
+    <!-- Golden Line -->
+    <div class="Homegolden-line"></div>
+
+    <!-- Image and Boxed Description Section -->
+    <div class="Homeimage-description">
+        <img src="/img/sell.png" alt="Feature Image">
+        
+        <div class="Homeimage-description-box">
+            <h3>Why Choose Raqba Realty?</h3>
+            <p>With years of expertise and a commitment to excellence, we help clients find their dream properties with ease and confidence.</p>
+            <p>We offer a wide range of real estate services, ensuring every transaction is smooth, transparent, and tailored to your needs.</p>
+        </div>
+    </div>
+</section>
+
+
+    
+<section class="Homeexclusive-container">
+
+    <!-- Section Title -->
+    <h2 class="exclusive-title">Explore Exclusive Properties</h2>
+
+    <h3 class="exclusivecontent-heading">Exclusive Property</h3>
+    <div class="exclusive-content">
+        
+        <!-- Left Side: Exclusive Cards + Description -->
+        <div class="exclusive-left">
+            <!-- Display Two Exclusive Properties -->
+            <div th:each="group, iterStat : ${exclusiveProperties}" th:if="${iterStat.index &lt; 2}" class="exclusive-card">
+                <div class="exclusive-image">
+                    <div th:id="'carousel-' + ${group.imageId}" class="carousel slide" data-bs-ride="false">
+                        <div class="carousel-inner">
+                            <th:block th:each="image, imageIter : ${group.images}">
+                                <div class="carousel-item" th:classappend="${imageIter.first} ? 'active' : ''">
+                                    <img th:src="@{'/images/' + ${image.id}}" class="d-block w-100" alt="Property Image">
+                                </div>
+                            </th:block>
+                        </div>
+
+                        <!-- Golden Carousel Controls -->
+                        <button class="carousel-control-prev custom-carousel-btn" type="button" th:data-bs-target="'#carousel-' + ${group.imageId}" data-bs-slide="prev" aria-label="Previous slide">
+                            <span class="carousel-control-prev-icon"></span>
+                        </button>
+                        <button class="carousel-control-next custom-carousel-btn" type="button" th:data-bs-target="'#carousel-' + ${group.imageId}" data-bs-slide="next" aria-label="Next slide">
+                            <span class="carousel-control-next-icon"></span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card Details (Right Side) -->
+                <div class="exclusive-details">
+                    <h3 th:text="${group.name}"></h3>
+                    <p><strong>Type:</strong> <span th:text="${group.type}"></span></p>
+                    <p><strong>Bedroom:</strong> <span th:text="${group.bedroom}"></span></p>
+                    <p><strong>Currency:</strong> <span th:text="${group.currency}"></span></p>
+                    <a th:href="@{/details/{id}(id=${group.imageId})}" class="btn exclusive-btn-primary btn-lg">Show Details</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side: Heading, Text, and Image + Description -->
+        <div class="exclusive-right">
+            <!-- Top Right: Heading and Text -->
+            <div class="exclusive-header">
+                <h3 class="exclusive-heading">Discover Luxury Living</h3>
+                <p class="exclusive-text">
+                    Experience the finest selection of exclusive properties, designed for luxury and comfort.
+                    Our handpicked listings offer unmatched quality and prime locations to suit your lifestyle.
+                </p>
+            </div>
+
+            <!-- Image + Description Below -->
+            <div class="exclusive-image-description">
+                <img src="/img/sell.png" alt="Exclusive Property" class="exclusive-top-image">
+                <p class="exclusive-top-description">
+                    Experience luxury living with our exclusive collection of properties. 
+                    Designed for those who seek elegance, comfort, and prime locations.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Golden Line and Additional Description Box -->
+    <div class="exclusive-bottom">
+        <hr class="exclusive-golden-line">
+        <div class="exclusive-info">
+            <img src="/img/sell.png" alt="Luxury Property" class="exclusive-feature-image">
+            <div class="exclusive-description">
+                <p>From modern apartments to grand villas, we provide the best real estate options for those seeking excellence.</p>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+
+<!-- FilterSelect Section -->
+<section class="FilterSelect-container">
+    <div class="FilterSelect-text-content">
+        <h2>Select Your Preferable Properties </h2>
+        <p>Using Filter</p>
+    </div>
+
+    <!-- First Row: Description and Property Card -->
+    <div class="FilterSelect-property-row">
+        <!-- Left Side: Description -->
+        <div class="FilterSelect-property-description">
+            <h3>Filter Property</h3>
+            <p>Browse our exclusive collection of properties at once. Whether you are searching for your first home, a luxury property, or an investment opportunity, our selection includes something for everyone. Our listings feature beautiful homes in prime locations, offering excellent value and long-term potential. Find your dream property today and enjoy a lifetime of comfort and luxury.</p>
+        </div>
+
+        <!-- Right Side: Property Card -->
+        <div class="FilterSelect-homepropertlycard">
+            <img src="/img/banner.png" class="FilterSelect-property-image" alt="Buy Property">
+            <div class="FilterSelect-card-body">
+                <h3 class="FilterSelect-card-title">Filter Property</h3>
+                <p class="FilterSelect-card-text">Browse our exclusive properties at once and find your dream home. Whether you're a first-time buyer or looking for an upscale investment, our diverse portfolio offers a range of styles, from modern apartments to charming family homes.</p>
+                <a href="/buy" class="FilterSelect-btn-primary">Filter Property</a>
+            </div>
+        </div>
+    </div>
+
+    <hr class="Hometype-golden-line">
+
+</section>
+
+<!-- Property Types Section -->
+<section class="Hometype-container">
+    <div class="Hometype-text-content">
+        <h2>Explore Our Properties</h2>
+        <p>Choose from a wide range of properties that suit your needs and preferences.</p>
+    </div>
+
+    <!-- First Row: Description and Property Card -->
+    <div class="Hometype-property-row">
+        <!-- Left Side: Description -->
+        <div class="Hometype-property-description">
+            <h3>Buy Property</h3>
+            <p>Browse our exclusive collection of properties for sale. Whether you are searching for your first home, a luxury property, or an investment opportunity, our selection includes something for everyone. Our listings feature beautiful homes in prime locations, offering excellent value and long-term potential. Find your dream property today and enjoy a lifetime of comfort and luxury.</p>
+        </div>
+
+        <!-- Right Side: Property Card -->
+        <div class="Hometype-homepropertlycard">
+            <img src="/img/banner.png" class="Hometype-property-image" alt="Buy Property">
+            <div class="Hometype-card-body">
+                <h3 class="Hometype-card-title">Buy Property</h3>
+                <p class="Hometype-card-text">Browse our exclusive properties for sale and find your dream home. Whether you're a first-time buyer or looking for an upscale investment, our diverse portfolio offers a range of styles, from modern apartments to charming family homes.</p>
+                <a href="/buy" class="Hometype-btn-primary">Explore Buy Properties</a>
+            </div>
+        </div>
+    </div>
+
+    <hr class="Hometype-golden-line">
+
+    <!-- Second Row: Rent Property - Card on Left, Description on Right -->
+    <div class="Hometype-property-row">
+        <!-- Left Side: Property Card -->
+        <div class="Hometype-homepropertlycard">
+            <img src="/img/sell.png" class="Hometype-property-image" alt="Rent Property">
+            <div class="Hometype-card-body">
+                <h3 class="Hometype-card-title">Rent Property</h3>
+                <p class="Hometype-card-text">Find the perfect rental property for your needs, whether you’re looking for a cozy apartment in the city or a spacious house in the suburbs. Our rental listings offer something for everyone, providing flexible options that meet your lifestyle.</p>
+                <a href="/rent" class="Hometype-btn-primary">Explore Rent Properties</a>
+            </div>
+        </div>
+
+        <!-- Right Side: Description -->
+        <div class="Hometype-property-description">
+            <h3>Rent Property</h3>
+            <p>Looking for a rental property? Our platform offers a range of rental properties in various price ranges and locations. From high-rise apartments with city views to quiet, family-friendly homes, you can find the perfect place to call home. Rent on your terms, whether you’re staying short-term or long-term, and find a space that suits your lifestyle.</p>
+        </div>
+    </div>
+
+    <hr class="Hometype-golden-line">
+
+    <!-- Third Row: Description and Property Card -->
+    <div class="Hometype-property-row">
+        <!-- Left Side: Description -->
+        <div class="Hometype-property-description">
+            <h3>Off-Plan Property</h3>
+            <p>Explore off-plan properties that offer exceptional value and future growth potential. Our off-plan projects range from cutting-edge modern apartments to sprawling villas, each designed to provide the ultimate in comfort, style, and investment potential. Take advantage of the opportunity to buy early and secure your place in one of the most exciting property developments available today.</p>
+        </div>
+
+        <!-- Right Side: Property Card -->
+        <div class="Hometype-homepropertlycard">
+            <img src="/img/sell.png" class="Hometype-property-image" alt="Off-Plan Property">
+            <div class="Hometype-card-body">
+                <h3 class="Hometype-card-title">Off-Plan Property</h3>
+                <p class="Hometype-card-text">Discover off-plan projects with the potential for significant future returns on investment. Off-plan properties allow you to invest in the property market before the construction is completed, often with exclusive pricing and high returns as development progresses.</p>
+                <a href="/offplan" class="Hometype-btn-primary">Explore Off-Plan Properties</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+   
+
+
+
+
+
+    
+<!-- User Reviews Section -->
+<section class="HomeReview-container">
+    <h2 class="review-main-title">What Our Clients Say</h2>
+
+   <div class="reviews-container">
+    <!-- First Review -->
+    <div class="review" th:each="review, iterStat : ${reviews}" th:if="${iterStat.index < 4}"
+         th:attr="data-fullname=${review.fullName}, data-message=${review.reviewMessage}">
+        <p class="review-name"><strong th:text="${review.fullName}"></strong></p>
+        <p class="review-location"><strong>Location:</strong> <span th:text="${review.location}"></span></p>
+        <p class="stars">
+            <span th:each="i : ${#numbers.sequence(1, review.starRating)}">⭐</span>
+        </p>
+        <p class="review-message" th:text="${#strings.abbreviate(review.reviewMessage, 100)}"></p>
+        <button class="review-more-button-home" onclick="showFullMessageHome(this.parentNode.dataset.fullname, this.parentNode.dataset.message)">More</button>
+    </div>
+
+    <!-- Centered "Latest Reviews" Text -->
+    <h2 class="latest-reviews-text">Latest Reviews</h2>
+
+</div>
+
+
+ 
+
+    <!-- Modal for Full Review Message -->
+    <div id="modalOverlayHome" class="review-modal-overlay-home" onclick="closeModalHome()"></div>
+    <div id="reviewModalHome" class="review-modal-home">
+        <div class="review-modal-header-home"></div>
+        <div class="review-modal-body-home"></div>
+        <button class="review-close-button-home" onclick="closeModalHome()">Close</button>
+    </div>
+    <!-- See All Reviews Button -->
+<div class="see-all-reviews-container">
+    <a href="/submitReview" class="see-all-reviews-button">See All Reviews</a>
+</div>
+    
+</section>
+
+    
+ 
+
+   <!-- About Us Section with Overlapping Images -->
+<section class="Aboutsection-container" id="about-us">
+    <div class="Aboutcontainer">
+        <h2 class="text-center Aboutsection-title">About Us</h2>
+        
+        <div class="row align-items-center">
+            <!-- Left Column with Overlapping Images -->
+            <div class="col-md-6 position-relative text-center">
+                <div class="Aboutimage-container">
+                    <img src="/img/sell.png" alt="Image 1" class="img-fluid rounded-circle Aboutfirst-image">
+                    <img src="/img/banner.png" alt="Image 2" class="img-fluid rounded-circle Aboutsecond-image">
+                </div>
+            </div>
+
+            <!-- Right Column with Content -->
+            <div class="col-md-6">
+                <h3 class="Aboutsection-subtitle">Who We Are</h3>
+                <p>
+                    At <strong>Raqba Realty</strong>, we believe real estate is not just about properties—it's about people. We are dedicated to helping you find the perfect property with a personalized and seamless experience.
+                </p>
+
+                <h3 class="Aboutsection-subtitle">Our Values</h3>
+                <ul class="about-values">
+                    <li><strong>Trust:</strong> Building relationships based on honesty and transparency.</li>
+                    <li><strong>Excellence:</strong> Delivering top-tier service with professionalism.</li>
+                    <li><strong>Customer-Centric:</strong> Your satisfaction is our priority.</li>
+                    <li><strong>Innovation:</strong> Using modern technology to offer smart solutions.</li>
+                </ul>
+
+                <h3 class="Aboutsection-subtitle">Our Mission</h3>
+                <p>
+                    Our mission is to make buying, selling, or renting real estate simple and stress-free. We provide expert guidance, in-depth market analysis, and personalized solutions to meet your needs.
+                </p>
+
+                <h3 class="Aboutsection-subtitle">Our Vision</h3>
+                <p>
+                    We aspire to be a leading real estate company known for trust, excellence, and innovation. Our goal is to empower individuals to make informed real estate decisions with confidence.
+                </p>
+
+                <!-- Call to Action -->
+                <div class="text-center mt-4">
+                    <a href="/contact" class="btn btn-primary btn-lg">Contact Us for More Information</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    
+ 
+  
+ 
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    </div>
+<footer class="footer">
+    <!-- Top Logo -->
+    <div class="footer-logo">
+        <img src="img/logo.png" alt="Company Logo">
+    </div>
+
+    <div class="footer-container">
+        <!-- Left: Pages -->
+        <div class="footer-section pages">
+            <h3>Pages</h3>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/services">Services</a></li>
+                <li><a href="/buy">Buy</a></li>
+                <li><a href="/rent">Rent</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </div>
+
+        <!-- Center: Location -->
+        <div class="footer-section location">
+            <h3>Our Location</h3>
+            <p>1234 Street Name, City, Country</p>
+            <p>Email: info@example.com</p>
+            <p>Phone: +123 456 7890</p>
+        </div>
+
+        <!-- Right: Social Icons -->
+        <div class="footer-section social">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="footer-bottom">
+        <p>&copy; 2025 YourCompany. All Rights Reserved.</p>
+    </div>
+</footer> 
+</body>
+</html>

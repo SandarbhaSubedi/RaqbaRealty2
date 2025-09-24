@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+ th:replace="~{normal/base::layout(~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Seat Booking</title>
+ 
+</head>
+<body>
+  <section>
+    
+    <div class="card mr-3 ml-3" >
+    
+     <div class="card-body">
+    
+       <h1 class="text-center">BOOK VEHICLE</h1>
+       
+       <div class="container-fluid mt-1">
+       
+       <div class="row">
+       
+       <div class="col-md-8 offset-md-2">
+       
+       <form action="#"
+         th:object="${contact}"
+          enctype="multipart/form-data"
+         method="POST"
+         th:action="@{/user/process-contact}"
+         class="mt-2">
+        
+        <div class="text-center">
+         
+         <select required style="height:10vh; width:70%;" class="form-select mt-5" aria-label="Default select example" name="name">
+       <option class="text-center" selected>DEPARTURE</option>
+       <option th:value="BIRATNAGAR">BIRATNAGAR</option>
+      </select>
+
+      </div> 
+      
+       <div class="text-center mt-5">
+      
+         <select required style="height:10vh; width:70%;" class="form-select" aria-label="Default select example" name="secondName">
+       <option class="text-center" selected>DESTINATION</option>
+     <option th:value="KATHMANDU">KATHMANDU</option>
+     </select>
+        
+             </div> 
+          <div class="text-center mt-5 font-bold">
+              <select required style="height:10vh; width:70%;" class="form-select" aria-label="Default select example" name="phone">
+  <option class="text-center" selected>CHOOSE VEHICLE</option>
+ <option th:value="SAJILO">SAJILO</option>
+ <option th:value="SAPNA">SAPNA</option>
+ <option th:value="NEPLOEAN">NEPOLEAN</option>
+ </select>
+  </div> 
+  
+  
+            <div class="text-center mt-5 font-bold">
+            <h4>ENTER DATE</h4>
+          
+          <input  style="height:10vh; width:70%;" required type="text" id="phone" name="work" 
+             placeholder="Day/Month/Year" class="text-center">
+
+  </div> 
+  
+  
+      <div class="text-center mt-5 font-bold">
+              <select required style="height:10vh; width:70%;" class="form-select" aria-label="Default select example" name="description">
+  <option class="text-center" selected>BOOK SEAT</option>
+ <option th:value="1">1</option>
+ <option th:value="2">2</option>
+ <option th:value="3">3</option>
+ <option th:value="4">4</option>
+ <option th:value="5">5</option>
+ </select>
+  </div> 
+  
+
+  
+        
+   
+       
+       
+       
+              
+       <!-- Phone Field
+              <div class="input-group">
+       
+         <div class="input-group-prepend">
+        
+           <div class="input-group-text mr-3">
+          
+             <i class="fa fa-phone"></i>
+           
+           </div> 	
+         
+          </div>
+       
+             <input required min="10" type="number" id="phone" name="phone" 
+             placeholder="Enter Phone Number" class="form-control">
+         </div> -->
+       
+                
+       <!-- Email Field -->
+              <div class="input-group">
+       
+         <div class="input-group-prepend">
+        
+           <div class="input-group-text mr-3">
+          
+        
+           
+           </div> 	
+         
+          </div>
+       
+             <input type="hidden" th:value="${user.email}"  required  id="phone" name="email" 
+             placeholder="Enter Email Here" class="form-control">
+         </div>
+       
+       
+                 
+       <!-- Work Field 
+              <div class="input-group">
+       
+         <div class="input-group-prepend">
+        
+           <div class="input-group-text mr-3">
+            
+            
+             
+           </div> 	
+         
+          </div>
+       
+             <input type="hidden" th:value="${user.about}" id="work" name="work" 
+             placeholder="Enter Work Here" class="form-control">
+         </div>
+                  -->
+       
+       
+                    
+       <!-- Description Field 
+          
+          <div class="form-group mt-3">
+          
+          <textarea th:value="${user.role}" id="mytextarea" placeholder="Enter Description Here" name="description"
+           rows="10" ></textarea>
+          
+          </div>
+          -->
+          
+          
+          
+       
+         <!-- Contact Image --> 
+<div class="custom-file" id="fileInputContainer">
+    <input type="file" name="profileImage" id="profileImageInput">
+</div>
+
+           
+          
+          <div class="container text-center" >
+          <button Class="btn btn-outline-primary">BOOK VEHICLE</button>
+          
+          </div>
+       
+       </form>
+       
+       </div>
+       
+       </div>
+       
+       </div>
+    
+     </div>
+    
+    </div>
+    
+   
+     <script src="https://cdn.tiny.cloud/1/5ygbwimxeveebysejdw8c0ic86ai715qm5v4tuc4x5hpvwbe/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+     <script>
+      tinymce.init({
+        selector: '#mytextarea'
+      });
+      
+    </script>
+    
+    </section>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Details</title>
+</head>
+<body>
+    <h1>Property Details</h1>
+    <div>
+        <p><strong>Name:</strong> <span th:text="${property.name}"></span></p>
+        <p><strong>Location:</strong> <span th:text="${property.location}"></span></p>
+        <p><strong>Type:</strong> <span th:text="${property.type}"></span></p>
+        <p><strong>Currency:</strong> <span th:text="${property.currency}"></span></p>
+        <p><strong>Description:</strong> <span th:text="${property.description}"></span></p>
+        <img th:src="@{/img/{property.photos}(property.photos=${property.photos})}" alt="Property Image" style="max-height: 300px;">
+    </div>
+    <div>
+        <a href="#" th:href="@{/properties}">Back to Properties List</a> <!-- Link back to the list -->
+    </div>
+</body>
+</html>

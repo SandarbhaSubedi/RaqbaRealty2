@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+
+          /* Footer Styles */
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.footer h5 {
+    color: #B8860B; /* Dark Golden Color */
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.footer ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer ul li {
+    margin-bottom: 10px;
+}
+
+.footer ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+}
+
+.footer ul li a:hover {
+    color: #B8860B; /* Dark Golden Color on hover */
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icon {
+    text-decoration: none;
+    font-size: 24px;
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #B8860B; /* Dark Golden Color on hover */
+}
+
+/* Copyright Styling */
+.footer .row:last-child {
+    margin-top: 20px;
+}
+
+.footer p {
+    font-size: 14px;
+    color: white;
+    margin: 0;
+}
+
+.footer #current-year {
+    font-weight: bold;
+    color: #B8860B; /* Dark Golden Color */
+}
+
+/* Add icons using Font Awesome */
+.fab {
+    font-family: "Font Awesome 5 Brands", sans-serif;
+}
+
+/* Styling for responsiveness */
+@media (max-width: 767px) {
+    .footer .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+}
+        
+        
+</style>
+</head>
+<body>
+<!-- Footer Section -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <!-- Footer Links -->
+            <div class="col-md-4">
+                <h5>Quick Links</h5>
+                <ul>
+                    <li><a href="/buy">Buy</a></li>
+                    <li><a href="/sell">Sell</a></li>
+                    <li><a href="/offplan">Off-Plan</a></li>
+                    <li><a href="/reviews">Reviews</a></li>
+                    <li><a href="/contact">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Social Media Links -->
+            <div class="col-md-4">
+                <h5>Connect With Us</h5>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com" target="_blank" class="social-icon facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com" target="_blank" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://twitter.com" target="_blank" class="social-icon twitter"><i class="fab fa-x"></i></a>
+                    <a href="https://wa.me" target="_blank" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.youtube.com" target="_blank" class="social-icon youtube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright Section -->
+        <div class="row">
+            <div class="col-12 text-center">
+                <p>&copy; <span id="current-year"></span> Raqba Realty. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

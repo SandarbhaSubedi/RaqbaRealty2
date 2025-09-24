@@ -1,0 +1,67 @@
+  body {
+            background-color: #000; /* Black background */
+            color: #fff; /* White text */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Banner section */
+        .sell-banner {
+            position: relative;
+            width: 100%;
+            height: 700px;
+            background-image: url('/img/banner.png'); /* Replace with the actual path to banner.png */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .sell-banner h1 {
+            font-size: 3rem;
+            color: #ffcc00; /* Gold color for the text */
+            background-color: rgba(0, 0, 0, 0.6); /* Black overlay for text background */
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .sell-container {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 1000px;
+            margin: 20px auto;
+            color: #333;
+        }
+
+        .sell-container h1 {
+            color: black;
+        }
+
+        .sell-container p {
+            color: black;
+        }
+       .sell-banner a {
+        text-decoration: none;
+        display: inline-block;
+        padding: 15px 30px; /* Button-like padding */
+        background-color: #ffcc00; /* Gold color */
+        color: #000; /* Black text */
+        font-size: 1.5rem; /* Larger text */
+        font-weight: bold; /* Bold text */
+        border-radius: 8px; /* Rounded corners */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Button shadow */
+        transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effect */
+         margin-top:100px;/* Center it inside the banner */
+        text-align: center;
+    }
+
+    .sell-banner a:hover {
+        background-color: #e6b800; /* Darker gold on hover */
+        transform: scale(1.05); /* Slightly enlarge on hover */
+    }

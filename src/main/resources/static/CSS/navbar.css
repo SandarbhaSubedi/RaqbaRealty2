@@ -1,0 +1,59 @@
+/* Navbar styling*/
+        .navbar {
+            background-color: black ; /* Grey background */
+            position: sticky; /* Make the navbar sticky at the top */
+            top: 0; /* Stick it to the top of the page */
+            z-index: 1000; /* Ensure the navbar stays on top of other content */
+            height: 120px; /* Adjust navbar height for larger logo */
+        }
+
+        .navbar .nav-link {
+            color: #ffffff; /* White text */
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .navbar .nav-link:hover {
+            color: #ffc107; /* Yellow hover effect */
+        }
+
+        .navbar .nav-link.active {
+            color: #ffc107; /* Yellow active link */
+            font-weight: bold;
+            border-bottom: 2px solid #ffc107; /* Yellow underline for active */
+        }
+
+        .logo-img {
+            height: 100px; /* Logo size increased by 5 times */
+            width: 500px;   /* Maintain aspect ratio */
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center; /* Align logo vertically with links */
+        }
+
+        .navbar {
+            padding: 10px 20px; /* Adjust padding for better spacing */
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .logo-img {
+                height: 150px; /* Scale down logo for small screens */
+            }
+
+            .navbar {
+                padding: 5px 10px; /* Reduce padding for small screens */
+            }
+
+            .navbar-nav {
+                text-align: center; /* Center-align menu items on mobile */
+            }
+
+            .navbar-nav .nav-link {
+                padding: 10px; /* Add padding for better touch targets */
+            }
+            
+        }
+        

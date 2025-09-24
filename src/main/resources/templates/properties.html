@@ -1,0 +1,75 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+th:replace="~{fragments/navbar::layout(~{::section})}">
+<head>
+    <meta charset="UTF-8" />
+    <title>Sell Page</title>
+    <link rel="stylesheet" href="/CSS/style.css">
+</head>
+<body>
+
+    
+    <section>
+    <h1>All Properties</h1>
+
+    <!-- Filter Form -->
+    <form th:action="@{/properties/filter}" method="get">
+        <div>
+            <label for="location">Location:</label>
+            <select id="location" name="location">
+                <option value="">Any</option>
+                <option value="Dubai">Dubai</option>
+                <option value="Abudabi">Abudabi</option>
+                <option value="Sarjah">sarjah</option>
+                
+            </select>
+        </div>
+        <div>
+            <label for="type">Type:</label>
+            <select id="type" name="type">
+                <option value="">Any</option>
+                <option value="Apartment">Apartment</option>
+                <option value="House">House</option>
+                <option value="Villa">Villa</option>
+                <option value="Office">Office</option>
+            </select>
+        </div>
+        <div>
+            <label for="area">Minimum Area (sq ft):</label>
+            <input type="number" id="area" name="area" placeholder="Enter minimum area">
+        </div>
+        <div>
+            <button type="submit">Filter</button>
+            <a th:href="@{/properties}"><button type="button">Reset</button></a>
+        </div>
+    </form>
+
+    <hr>
+
+    <!-- Properties Table -->
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Type</th>
+                <th>Currency</th>
+                <th>Area</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="property : ${properties}">
+                <td th:text="${property.name}"></td>
+                <td th:text="${property.location}"></td>
+                <td th:text="${property.type}"></td>
+                <td th:text="${property.currency}"></td>
+                <td th:text="${property.area}"></td>
+                <td>
+                    <a th:href="@{/properties/{id}(id=${property.pId})}">View Details</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </section>
+</body>
+</html>

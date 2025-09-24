@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Gallery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        /* General Styles */
+        body {
+            background-color: black;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        .navbar {
+            background-color: #343a40;
+            padding: 15px 20px;
+        }
+        .navbar .nav-link {
+            color: #ffffff;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .navbar .nav-link:hover, .navbar .nav-link.active {
+            color: #ffc107;
+        }
+        .logo-img {
+            height: 80px;
+            width: auto;
+        }
+        
+
+        /* Container */
+        .container {
+            background:black;
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(212, 175, 55, 0.8); /* golden glow */
+            border: 2px solid gold; /* proper border */
+        }
+
+        /* Title */
+        h2 {
+            color:white;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        /* Filter Section */
+        .filter-section {
+            background: #ffd700;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            color: black;
+        }
+
+        .filter-section label {
+            font-weight: bold;
+        }
+
+        /* Card Styles */
+        .card {
+            border: none;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-body {
+            text-align: center;
+        }
+
+        .card-title a {
+            font-size: 18px;
+            font-weight: bold;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .card-title a:hover {
+            text-decoration: underline;
+        }
+
+        /* Button Styles */
+        .show-button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .show-button:hover {
+            background: #0056b3;
+        }
+
+        /* Image Slider */
+        .carousel-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .carousel-control-prev, .carousel-control-next {
+            filter: invert(100%);
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/user/admindashboard">
+            <img src="/img/logo.png" alt="Logo" class="logo-img">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="admindashboard" th:classappend="${page == 'admindashboard'} ? 'active' : ''">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="viewContacts" th:classappend="${page == 'contacts'} ? 'active' : ''">Contacts</a></li>
+                <li class="nav-item"><a class="nav-link" href="upload" th:classappend="${page == 'upload'} ? 'active' : ''">Upload</a></li>
+                <li class="nav-item"><a class="nav-link" href="usergallery" th:classappend="${page == 'usergallery'} ? 'active' : ''">Gallery</a></li>
+                <li class="nav-item"><a class="nav-link" href="adminreviews" th:classappend="${page == 'areviews'} ? 'active' : ''">approvereview</a></li>
+                <li class="nav-item"><a class="nav-link" href="admin-rent" th:classappend="${page == 'rent'} ? 'active' : ''">RentRequest</a></li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+<div class="container mt-5">
+    <h2 class="text-center">Property Gallery</h2>
+
+    <!-- Filter Section -->
+    <div class="filter-section">
+        <form th:action="@{/user/usergallery}" method="get" class="row">
+            <!-- Title Selection -->
+            <div class="col-md-3">
+                <label for="title">Title:</label>
+                <select name="title" id="title" class="form-control" onchange="this.form.submit()">
+                    <option value="Primary" th:selected="${title == 'Primary'}">Primary</option>
+                    <option value="Secondary" th:selected="${title == 'Secondary'}">Secondary</option>
+                </select>
+            </div>
+
+            <!-- Bedroom Selection -->
+            <div class="col-md-3">
+                <label for="bedroom">Bedroom:</label>
+                <select name="bedroom" id="bedroom" class="form-control" onchange="this.form.submit()">
+                    <option value="All" th:selected="${bedroom == null or bedroom == 'All'}">All</option>
+                    <option th:each="bed : ${availableBedrooms}" th:value="${bed}" th:text="${bed}" th:selected="${bed == bedroom}"></option>
+                </select>
+            </div>
+
+            <!-- Max Currency Input -->
+            <div class="col-md-3">
+                <label for="maxCurrency">Max Currency (≤ <span th:text="${maxAvailableCurrency}"></span>):</label>
+                <input type="text" name="maxCurrency" id="maxCurrency" class="form-control"
+                       th:value="${maxCurrency}" placeholder="Enter max currency" onchange="this.form.submit()">
+            </div>
+        </form>
+    </div>
+
+    <!-- Show Available Count (Click to Show List) -->
+    <form th:action="@{/user/usergallery}" method="get" class="text-center">
+        <input type="hidden" name="title" th:value="${title}" />
+        <input type="hidden" name="bedroom" th:value="${bedroom}" />
+        <input type="hidden" name="maxCurrency" th:value="${maxCurrency}" />
+        <button type="submit" name="showDetails" value="true" class="btn show-button mt-3">
+            <span th:text="${imageGroups.size()} + ' result(s) available.'"></span>
+        </button>
+    </form>
+
+    <!-- Image Groups List (Click to See Details) -->
+    <div class="row mt-3" th:if="${showDetails}">
+          <div class="col-md-4 mb-4" th:each="group : ${imageGroups}">
+            <div class="card">
+                <!-- Bootstrap Carousel for Image Slider -->
+                <div th:id="'carousel-' + ${group.imageId}" class="carousel slide" data-bs-ride="false">
+                    <div class="carousel-inner">
+                        <th:block th:each="image, iterStat : ${group.images}">
+                            <div class="carousel-item" th:classappend="${iterStat.first} ? 'active' : ''">
+                                <img th:src="@{'/user/images/' + ${image.id}}" class="d-block w-100" alt="Image">
+                            </div>
+                        </th:block>
+                    </div>
+
+                    <!-- Carousel Controls -->
+                    <button class="carousel-control-prev" type="button" th:data-bs-target="'#carousel-' + ${group.imageId}" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" th:data-bs-target="'#carousel-' + ${group.imageId}" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    </button>
+                </div>
+
+                <div class="card-body">
+        <h5 class="card-title"><span th:text="${group.name}"></span></h5>
+        <p class="card-text">Type: <span th:text="${group.type}"></span></p>
+        <p class="card-text">Bedroom: <span th:text="${group.bedroom}"></span></p>
+        <p class="card-text">Currency: <span th:text="${group.currency}"></span></p>
+                    <a th:href="@{/user/details/{id}(id=${group.imageId})}" class="btn btn-primary">Show Details</a>
+                
+      <a th:href="@{/user/delete/{id}(id=${group.id})}" class="btn btn-danger"
+   onclick="return confirm('Are you sure you want to delete this image group?');">
+    Delete
+</a>
+
+
+
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- "Show More" Button -->
+    <th:block th:if="${currentPage != null and totalPages != null and currentPage + 1 < totalPages}">
+    <a th:href="@{/usergallery(page=${currentPage + 1})}" class="btn btn-primary">Load More</a>
+</th:block>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

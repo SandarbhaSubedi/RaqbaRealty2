@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Gallery</title>
+      <!-- External Styles and Fonts -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* General Styles */
+        body {
+           font-family: 'Raleway', sans-serif;
+            background-color: rgb(0, 0, 0);
+            color: white;
+        }
+             .navbar {
+    background: transparent; /* remove solid background */
+    padding: 10px 0;
+    position: absolute; /* place navbar over hero */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10; /* keep navbar on top */
+}
+
+
+        .logo-img {
+            width: 250px;
+            height: auto;
+        }
+
+        .navbar-nav .nav-link {
+            color: white !important;
+            font-weight: 600;
+            padding: 8px 15px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: #ffc107 !important;
+            font-weight: bold;
+            
+        }
+
+        .follow-us {
+            color: white;
+            font-weight: bold;
+            margin-left: 20px;
+        }
+        
+        /* Container */
+        .container {
+            
+           margin-top : 400px;
+            
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+           
+        }
+
+        /* Title */
+        h2 {
+            color: white;
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-top: 100px;
+        }
+        h2 span {
+            color: gold;
+        }
+
+        /* Filter Section */
+        .filter-section {
+           background: url("img/filterbg.jpg") center center / cover no-repeat;
+            padding: 15px;
+            
+            margin-bottom: 20px;
+            color:white;
+        }
+
+        .filter-section label {
+            font-weight: bold;
+        }
+
+        /* Card Styles */
+        .card {
+            border: gold;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+             background: linear-gradient(135deg, #1f1f1f, #2a1a2e);
+            color:white;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-body {
+            text-align: center;
+        }
+
+        .card-title a {
+           
+            font-size: 18px;
+            font-weight: bold;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .card-title a:hover {
+            text-decoration: underline;
+        }
+
+        /* Button Styles */
+        .btn {
+            background: #DAA520;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: gold;
+            color : white;
+        }
+
+        /* Image Slider */
+        .carousel-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .carousel-control-prev, .carousel-control-next {
+            filter: invert(100%);
+        }
+        
+        /* Hide buttons initially */
+.carousel-control-prev,
+.carousel-control-next {
+    display: none;
+    
+    padding: 8px;
+    transition: background-color 0.3s ease;
+}
+
+/* Add positioning just in case */
+.carousel-control-prev,
+.carousel-control-next {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Show buttons & darken image on hover */
+.carousel-hover-wrapper:hover .carousel-control-prev,
+.carousel-hover-wrapper:hover .carousel-control-next {
+    display: block;
+}
+
+.carousel-hover-wrapper:hover .carousel-image {
+    filter: brightness(60%);
+}
+
+/* Optional: smooth dark effect */
+.carousel-image {
+    transition: filter 0.3s ease;
+}
+
+        
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+            <img src="/img/logo.png" alt="Logo" class="logo-img">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+                      <li>
+                      <a class="nav-link" href="/" th:classappend="${page == 'home'} ? 'active' : ''">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about" th:classappend="${page == 'about'} ? 'active' : ''">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/contact}" th:classappend="${page == 'contact'} ? 'active' : ''">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/sell" th:classappend="${page == 'sell'} ? 'active' : ''">Sell</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/buy" th:classappend="${page == 'buy'} ? 'active' : ''">Buy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Rentform" th:classappend="${page == 'rent'} ? 'active' : ''">Rent</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="/offplan" th:classappend="${page == 'offplan'} ? 'active' : ''">OffPlan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/submitReview}" th:classappend="${page == 'submitReview'} ? 'active' : ''">Review</a>
+                    </li>
+                
+            </ul>
+            <span class="follow-us">Follow Us</span>
+        </div>
+    </div>
+</nav>
+<div class="container mt-5">
+    <h2 class="text-center"><span>FILTER</span> PROPERTY</h2>
+
+    <!-- Filter Section -->
+    <div class="filter-section">
+    
+        <form th:action="@{/gallery}" method="get" class="row">
+            <!-- Title Selection -->
+            <div class="col-md-3">
+                <label for="title">Title:</label>
+                <select name="title" id="title" class="form-control" onchange="this.form.submit()">
+                    <option value="Primary" th:selected="${title == 'Primary'}">Primary</option>
+                    <option value="Secondary" th:selected="${title == 'Secondary'}">Secondary</option>
+                </select>
+            </div>
+
+            <!-- Bedroom Selection -->
+            <div class="col-md-3">
+                <label for="bedroom">Bedroom:</label>
+                <select name="bedroom" id="bedroom" class="form-control" onchange="this.form.submit()">
+                    <option value="All" th:selected="${bedroom == null or bedroom == 'All'}">All</option>
+                    <option th:each="bed : ${availableBedrooms}" th:value="${bed}" th:text="${bed}" th:selected="${bed == bedroom}"></option>
+                </select>
+            </div>
+
+            <!-- Max Currency Input -->
+            <div class="col-md-3">
+                <label for="maxCurrency">Max Currency (≤ <span th:text="${maxAvailableCurrency}"></span>):</label>
+                <input type="text" name="maxCurrency" id="maxCurrency" class="form-control"
+                       th:value="${maxCurrency}" placeholder="Enter max currency" onchange="this.form.submit()">
+            </div>
+        </form>
+    </div>
+
+    <!-- Show Available Count (Click to Show List) -->
+    <form th:action="@{/gallery}" method="get" class="text-center">
+        <input type="hidden" name="title" th:value="${title}" />
+        <input type="hidden" name="bedroom" th:value="${bedroom}" />
+        <input type="hidden" name="maxCurrency" th:value="${maxCurrency}" />
+        <button type="submit" name="showDetails" value="true" class="btn show-button mt-3">
+            <span th:text="${imageGroups.size()} + ' result(s) available.'"></span>
+        </button>
+    </form>
+
+    <!-- Image Groups List (Click to See Details) -->
+    <div class="row mt-3" th:if="${showDetails}">
+          <div class="col-md-4 mb-4" th:each="group : ${imageGroups}">
+            <div class="card">
+    <!-- Hover Wrapper -->
+    <div class="carousel-hover-wrapper">
+        <!-- Bootstrap Carousel for Image Slider -->
+        <div th:id="'carousel-' + ${group.imageId}" class="carousel slide" data-bs-ride="false">
+            <div class="carousel-inner">
+                <th:block th:each="image, iterStat : ${group.images}">
+                    <div class="carousel-item" th:classappend="${iterStat.first} ? 'active' : ''">
+                        <img th:src="@{'/images/' + ${image.id}}" class="d-block w-100 carousel-image" alt="Image">
+                    </div>
+                </th:block>
+            </div>
+
+            <!-- Carousel Controls -->
+            <button class="carousel-control-prev" type="button"
+                    th:data-bs-target="'#carousel-' + ${group.imageId}" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </button>
+            <button class="carousel-control-next" type="button"
+                    th:data-bs-target="'#carousel-' + ${group.imageId}" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Card Body -->
+    <div class="card-body">
+        <h5 class="card-title" th:text="${group.name}"></h5>
+        <p class="card-text">Type: <span th:text="${group.type}"></span></p>
+        <p class="card-text">Bedroom: <span th:text="${group.bedroom}"></span></p>
+        <p class="card-text">Currency: <span th:text="${group.currency}"></span></p>
+        <a th:href="@{/details/{id}(id=${group.imageId})}" class="btn btn-primary">Show Details</a>
+    </div>
+</div>
+
+        </div>
+    </div>
+    </div>
+
+   
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

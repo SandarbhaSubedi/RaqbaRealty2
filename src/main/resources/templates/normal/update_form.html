@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+ th:replace="~{normal/base::layout(~{::section})}">
+<head>
+    <meta charset="UTF-8" />
+    <title>User Dashboard</title>
+</head>
+<body>
+<section>
+<div class="card mr-3 ml-3" >
+  <div class="card-body">
+    
+       <h1 class="text-center">UPDATE SEAT</h1>
+       
+       <div class="container-fluid mt-1">
+       
+       <div class="row">
+       
+       <div class="col-md-8 offset-md-2">
+       
+       <form action="#"
+         th:object="${contact}"
+          enctype="multipart/form-data"
+         method="POST"
+         th:action="@{/user/process-update}"
+         class="mt-2">
+         
+         <input type="hidden" th:value="${contact.cId}" name="cId" />
+         
+         
+       <!-- First Name -->
+       
+    
+        </div>
+       
+             <input th:value="${contact.name}" type="hidden"  id="firstName" name="name" 
+             placeholder="Enter Name Here" class="form-control">
+       </div>
+       
+       <!-- Second Name -->
+            
+       
+             <input th:value="${contact.secondName}" type="hidden"  id="secondName" name="secondName" 
+             placeholder="Enter Second Name" class="form-control">
+         </div>
+       
+       
+              
+       <!-- Phone Field -->
+           
+           </div> 	
+         
+          </div>
+       
+             <input th:value="${contact.phone}"  min="10" type="hidden" id="phone" name="phone" 
+             placeholder="Enter Phone Number" class="form-control">
+         
+       
+                
+   
+              
+           
+         
+       
+             <input th:value="${contact.email}" type="hidden"  id="phone" name="email" 
+             placeholder="Enter Email Here" class="form-control">
+      
+       
+       
+
+         
+            
+       
+             <input th:value="${contact.work}" type="hidden" id="work" name="work" 
+             placeholder="Enter Work Here" class="form-control">
+      
+       
+       
+                    
+       <!-- Description Field --> 
+          
+      <div class="text-center mt-5 font-bold">
+              <select required style="height:10vh; width:70%;" class="form-select" aria-label="Default select example" name="description">
+  <option class="text-center" th:text="${contact.description}" selected>BOOK SEAT</option>
+ <option th:value="1">1</option>
+ <option th:value="2">2</option>
+ <option th:value="3">3</option>
+ <option th:value="4">4</option>
+ <option th:value="5">5</option>
+ </select>
+  </div> 
+       
+          
+          
+               <!-- Contact Image --> 
+       <div class="custom-file" id="fileInputContainer">
+    <input type="file" name="profileImage" id="profileImageInput">
+</div>
+          
+          <div class="container text-center">
+          <button Class="btn btn-outline-primary">Save Contact</button>
+          
+          </div>
+       
+       </form>
+       
+       
+     
+       <script src="https://cdn.tiny.cloud/1/5ygbwimxeveebysejdw8c0ic86ai715qm5v4tuc4x5hpvwbe/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+     <script>
+      tinymce.init({
+        selector: '#mytextarea'
+      });
+      
+    </script>
+    
+   </section>
+</body>
+</html>

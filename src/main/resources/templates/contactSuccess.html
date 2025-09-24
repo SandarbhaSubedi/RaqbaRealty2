@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Contact Page</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        
+ body {
+            font-family: 'Raleway', sans-serif;
+           background: linear-gradient(135deg, #1f1f1f, #2a1a2e);
+            color: white;
+        }
+                     .navbar {
+    background: transparent; /* remove solid background */
+    padding: 10px 0;
+    position: absolute; /* place navbar over hero */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10; /* keep navbar on top */
+}
+
+        .logo-img {
+            width: 250px;
+            height: auto;
+        }
+
+        .navbar-nav .nav-link {
+            color: white !important;
+            font-weight: 600;
+            padding: 8px 15px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: #ffc107 !important;
+            font-weight: bold;
+         
+        }
+
+        .follow-us {
+            color: white;
+            font-weight: bold;
+            margin-left: 20px;
+        }
+
+         
+        .hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align : center;
+    padding: 80px 100px;
+    min-height: 80vh;
+    background: url("img/contactbg.jpg") center center / cover no-repeat;
+    overflow: hidden;
+
+    
+}
+
+/* Dark overlay for better text contrast */
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8));
+    z-index: 1;
+}
+
+
+
+.hero-content {
+    position: relative;
+    z-index: 2; /* Keep text above overlay */
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* Text container */
+.hero-text {
+    color: white;
+}
+
+/* Animations remain unchanged */
+.fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 2s ease forwards;
+}
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+.golden-text {
+    background: linear-gradient(90deg, #ffc107, #ffd700, #ffc107);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.2rem;
+}
+
+          
+.contact-section {
+  background: black;
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.contact-container {
+  max-width: 1100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+
+/* Left Info Section */
+.contact-info .subtitle {
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: gold;
+}
+
+.contact-info h2 {
+  font-size: 32px;
+  font-weight: bold;
+  line-height: 1.3;
+  margin: 15px 0;
+  color: white;
+}
+
+.contact-info .description {
+  color: white;
+  margin-bottom: 20px;
+}
+
+.contact-details p {
+  margin: 10px 0;
+  color: white;
+  font-size: 15px;
+}
+
+.contact-details i {
+  color: gold;
+  margin-right: 8px;
+}
+
+/* Form Card */
+.contact-form-wrapper {
+  background: #000;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.4); /* golden shadow */
+}
+
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border: 1px solid gold;
+  border-radius: 8px;
+  font-size: 14px;
+   color: white;
+   background: black;
+}
+
+.contact-form textarea {
+  resize: none;
+ 
+
+}
+
+
+.submit-btn {
+  width: 100%;
+  padding: 14px;
+  background: gold;
+  border: none;
+  border-radius: 8px;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.submit-btn:hover {
+  background:#d4af37;
+}
+
+.success-message {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #c3e6cb;
+    margin-bottom: 15px;
+    font-weight: 500;
+    box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+    text-align : center;
+}
+
+
+footer {
+    background-color: rgba(0, 0, 0, 0.3); /* Dark purple background */
+    color: white;
+    padding: 40px 60px;
+    font-family: Arial, sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+/* Left Section: Logo & Tagline */
+.footer-left {
+    max-width: 250px;
+}
+
+.footer-logo {
+    width: 180px; /* Adjust logo size */
+}
+
+.footer-tagline {
+    font-size: 0.9rem;
+    margin-top: 5px;
+    opacity: 0.8;
+}
+
+/* Middle Section: Navigation Links */
+.footer-middle {
+    display: flex;
+    gap: 40px;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.footer-column a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer-column a:hover {
+    color: gold;
+}
+
+/* Right Section: Location & Social Icons */
+.footer-right {
+    text-align: right;
+}
+
+.footer-location {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.footer-address {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-bottom: 10px;
+}
+
+/* Social Icons */
+.footer-social {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+    justify-content: flex-end;
+}
+
+.footer-social a {
+    color: white;
+    font-size: 1.5rem;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer-social a:hover {
+    color: gold;
+}
+
+/* Call Us Button */
+.call-us-button {
+            border: 2px solid gold;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 1rem;
+            background: transparent;
+            color: white;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+.call-us-button:hover {
+    background-color: gold;
+    color: black;
+}
+
+/* Bottom Footer Section */
+.footer-bottom {
+    border-top: 2px solid gold;
+    margin-top: 30px;
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer-links a:hover {
+    color: gold;
+}
+    </style>
+</head>
+<body>
+<div th:if="${successMessage}" class="success-message">
+        <p th:text="${successMessage}"></p>
+    </div>
+    
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+            <img src="/img/logo.png" alt="Logo" class="logo-img">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+                      <li>
+                      <a class="nav-link" href="/" th:classappend="${page == 'home'} ? 'active' : ''">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about" th:classappend="${page == 'about'} ? 'active' : ''">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/contact}" th:classappend="${page == 'contact'} ? 'active' : ''">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/sell" th:classappend="${page == 'sell'} ? 'active' : ''">Sell</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/buy" th:classappend="${page == 'buy'} ? 'active' : ''">Buy</a>
+                    </li>
+                    <li class="nav-item">
+                       <a class="nav-link" href="/Rentform" th:classappend="${page == 'rent'} ? 'active' : ''">Rent</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="/offplan" th:classappend="${page == 'offplan'} ? 'active' : ''">OffPlan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/submitReview}" th:classappend="${page == 'submitReview'} ? 'active' : ''">Review</a>
+                    </li>
+                
+            </ul>
+            <span class="follow-us">Follow Us</span>
+        </div>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <div class="hero-text">
+            <h6 class="fade-up delay-1 golden-text">Your trusted partner for everything UAE Real Estate.”</h6>
+            <p class="firstp fade-up delay-2 golden-text">WE’RE MORE THAN JUST A REAL ESTATE FIRM.</p>
+            <h3 class="secondp fade-up delay-3 shimmer">
+                CONTACT US <br> SHARE ABOUT YOUR CHOICE
+            </h3>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+  <section class="contact-section">
+  <div class="contact-container">
+    
+    <!-- Left Column (Info) -->
+    <div class="contact-info">
+      <p class="subtitle">WE'RE HERE TO HELP YOU</p>
+      <h2>Discuss <br>Your Property Needs</h2>
+      <p class="description">
+        Are you looking for the perfect property solution tailored to your needs? Reach out to us.
+      </p>
+
+      <div class="contact-details">
+        <p><i class="fas fa-envelope"></i> Email: <span>info@raqbarealty.com</span></p>
+        <p><i class="fas fa-phone"></i> Phone: <span>+971 55 635 6640</span></p>
+      </div>
+    </div>
+
+    <!-- Right Column (Form) -->
+    <div class="contact-form-wrapper">
+      <form class="contact-form" th:action="@{/submitContact}" th:object="${contact}" method="post">
+        
+        <input type="text" id="name" th:field="*{name}" placeholder="Your Name" required>
+        <input type="text" id="phone" th:field="*{phone}" placeholder="Your Phone" required>
+        <input type="email" id="email" th:field="*{email}" placeholder="Your Email" required>
+
+        <select id="property" th:field="*{property}" required>
+          <option value="">Select Property Type</option>
+          <option value="Buy">Buy</option>
+          <option value="Rent">Rent</option>
+          <option value="Off-Plan">Off-Plan</option>
+          <option value="Sell">Sell</option>
+        </select>
+
+        <select id="bedroom" th:field="*{bedroom}" required>
+          <option value="">Select Bedroom Count</option>
+          <option th:each="i : ${#numbers.sequence(1, 10)}" 
+                  th:value="${i}" th:text="${i}"></option>
+        </select>
+
+        <input type="number" id="currency" th:field="*{currency}" placeholder="Maximum Budget" required>
+
+      
+
+        <button type="submit" class="submit-btn">SUBMIT</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+
+<footer>
+    <div class="footer-container">
+        <!-- Left Section: Logo -->
+        <div class="footer-left">
+            <img src="/img/logo.png" alt="logo-of-footer" class="footer-logo">
+            <p class="footer-tagline">WHERE DREAMS MEET REALITY</p>
+        </div>
+
+        <!-- Middle Section: Navigation Links -->
+        <div class="footer-middle">
+            <div class="footer-column">
+                <a href="#">Apartments</a>
+                <a href="#">Penthouses</a>
+                <a href="#">Villas</a>
+                <a href="#">Townhouses</a>
+                <a href="#">Off-Plan</a>
+            </div>
+            <div class="footer-column">
+                <a href="#">Catalogs</a>
+                <a href="#">Area Guides</a>
+                <a href="#">Sell</a>
+                <a href="#">Rent</a>
+                <a href="#">Developers</a>
+            </div>
+            <div class="footer-column">
+                <a href="#">Raqba Realty</a>
+                <a href="#">Reviews</a>
+                <a href="#">Careers</a>
+                <a href="#">Contact Us</a>
+            </div>
+        </div>
+
+        <!-- Right Section: Contact Info & Social Icons -->
+        <div class="footer-right">
+            <p class="footer-location"><strong>Dubai, UAE</strong></p>
+            <p class="footer-address">Al Bahar Building, Al Khabesi Area, Deira</p>
+            
+            <div class="footer-social">
+                <a href="#"><i class="fas fa-envelope"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-x-twitter"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+
+            <a href="tel:+9800000000" class="call-us-button mt-3">Call Us</a>
+        </div>
+    </div>
+
+    <!-- Bottom Footer Section -->
+    <div class="footer-bottom">
+        <p>RAQBA REALTY ©2025, All Rights Reserved</p>
+        <div class="footer-links">
+            <a href="#">Terms of Use</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Sitemap</a>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+</html>

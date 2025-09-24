@@ -1,0 +1,775 @@
+/* Navbar styling*/
+        .navbar {
+            background-color: black ; /* Grey background */
+            position: sticky; /* Make the navbar sticky at the top */
+            top: 0; /* Stick it to the top of the page */
+            z-index: 1000; /* Ensure the navbar stays on top of other content */
+            height: 120px; /* Adjust navbar height for larger logo */
+        }
+
+        .navbar .nav-link {
+            color: #ffffff; /* White text */
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .navbar .nav-link:hover {
+            color: #ffc107; /* Yellow hover effect */
+        }
+
+        .navbar .nav-link.active {
+            color: #ffc107; /* Yellow active link */
+            font-weight: bold;
+            border-bottom: 2px solid #ffc107; /* Yellow underline for active */
+        }
+
+        .logo-img {
+            height: 100px; /* Logo size increased by 5 times */
+            width: 400px;   /* Maintain aspect ratio */
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center; /* Align logo vertically with links */
+        }
+
+        .navbar {
+            padding: 10px 20px; /* Adjust padding for better spacing */
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .logo-img {
+                height: 150px; /* Scale down logo for small screens */
+            }
+
+            .navbar {
+                padding: 5px 10px; /* Reduce padding for small screens */
+            }
+
+            .navbar-nav {
+                text-align: center; /* Center-align menu items on mobile */
+            }
+
+            .navbar-nav .nav-link {
+                padding: 10px; /* Add padding for better touch targets */
+            }
+            
+        }
+        
+        
+               
+      html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevents horizontal scrolling */
+}
+
+.Aboutbody {
+    background-image: url("/img/backgroundimage.png.jpg"); /* Ensure the path is correct */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh; /* Ensures full page height */
+    width: 100vw; /* Ensures full width */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Align content vertically */
+    align-items: center; /* Align content horizontally */
+}
+
+
+        /* About Section */
+        .about-section {
+           
+            height: auto;
+            background-color: rgba(0, 0, 0, 0.35); /* Black with 60% opacity */
+            text-align: center;
+            margin-left: 2.5%;
+        }
+
+        /* Image */
+        .image-container {
+            width: 100%;
+            position: relative;
+        }
+
+        .image-container img {
+            width: 95%; /* Covers 95% of the page */
+            height: 43rem;
+            display: block;
+            margin: auto;
+        }
+
+        /* Overlay Text (inside the image on the right, no box) */
+        .overlay-text {
+            position: absolute; /* To position it over the photo */
+            top: 50%; /* Adjust position if needed */
+            left: 80%; /* Adjust position if needed */
+            transform: translate(-50%, -50%); /* Center the text */
+            color: #B8860B; /* Gold color */
+            font-size: 24px; /* Adjust font size */
+            font-weight: bold; /* Make text bold for emphasis */
+            text-align: center; /* Center align text */
+            padding: 10px 20px; /* Add some padding around the text */
+            background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent dark background for contrast */
+            border-radius: 8px; /* Rounded corners for a smooth look */
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6); /* Shadow for text */
+        }
+
+        .overlay-text h2 {
+            font-size: 4.5rem;
+            font-weight: bold;
+            color: #B8860B;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8); /* Shadow for visibility */
+        }
+
+        .overlay-text .subheading {
+            font-size: 2.5rem;
+            color: #B8860B;
+            font-weight: 500;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8); /* Shadow for visibility */
+        }
+
+        /* Updated Content Container */
+.content-container {
+    width: 75%; /* Reduce width for better readability */
+    margin: 50px auto; /* Add spacing around the section */
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 columns layout */
+    gap: 70px; /* Adjust spacing between elements */
+    align-items: center; /* Align content properly */
+}
+
+        .content-container p {
+            font-size: 1.2rem;
+            margin-top :0;
+        }
+
+        /* Introduction Text - Centered at Top */
+.intro-text {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #B8860B;
+    text-align: center;
+    grid-column: span 2; /* Make the intro span across both columns */
+    margin-bottom: 30px;
+}
+/* Left and Right Text Blocks */
+.description {
+    font-size: 1.2rem;
+    color: white;
+    text-align: justify;
+    padding: 30px;
+    border-radius: 8px;
+   background-color: rgba(0, 0, 0, 0.3); /* Black with 60% opacity */
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+       
+
+        /* New Section: Who Are We */
+/* Who Are We Section */
+.who-are-we {
+    width: 90%;
+    margin: 50px auto;
+    background-color: rgba(0, 0, 0, 0.35); /* Black with 60% opacity */
+    padding: 40px; /* Add padding for space around content */
+    border-radius: 8px; /* Optional: round the corners */
+}
+
+/* Content: Left Text and Right Images */
+.who-are-we-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Align items vertically in the center */
+    margin-bottom: 40px;
+}
+
+/* Text Section (Who Are We) on the Left */
+.who-are-we .text {
+    width: 55%; /* Adjust width of the text section */
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+/* Title of Who Are We */
+.who-are-we .text h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+        color: #B8860B;
+}
+
+.who-are-we .text p{
+color:white;
+}
+
+/* Images Section on the Right */
+.who-are-we .images {
+    display: flex;
+    justify-content: space-between; /* Ensure images are spaced evenly */
+    width: 40%; /* Adjust width of the images section */
+}
+
+.who-are-we .image-container {
+    width: 30%; /* Each image container takes 30% of the space */
+}
+
+.who-are-we .images img {
+    width: 100%; /* Make images fill their container */
+    height: auto; /* Keep aspect ratio intact */
+    max-height: 200px; /* Set a maximum height for the images */
+    object-fit: cover; /* Ensure the image covers the area without distortion */
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); /* Add shadow for a nice effect */
+    transition: transform 0.3s ease; /* Add transition effect on hover */
+}
+
+/* Add a hover effect for the images */
+.who-are-we .images img:hover {
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+
+/* Trusted Agency Text */
+.trusted-agency {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* Logos Below the Trusted Text */
+.agency-logos {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 90%;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.agency-logos img {
+    width: 18%;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/*Golden Line */
+/* Golden Line */
+.golden-line {
+    width: 100%;
+    height: 3px; /* Adjust thickness of the line */
+    background-color: #B8860B; /* Golden color */
+    margin: 40px 0; /* Space above and below the line */
+}
+
+/* Descriptions Below Golden Line */
+.descriptions {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px; /* Space between the two descriptions */
+    margin-top: 30px;
+}
+
+.left-description, .right-description {
+    width: 48%; /* Each description takes up 48% of the row */
+    font-size: 1.2rem;
+    color: white;
+    line-height: 1.8; /* Line height for readability */
+    display: block; /* Ensure they are block-level elements */
+}
+
+/* Adjusting the left and right descriptions */
+.left-description {
+    text-align: left; /* Left-align text */
+    padding-right: 20px; /* Add padding on the right side for spacing */
+}
+
+.right-description {
+    text-align: justify; /* Justify text for clean alignment */
+    padding-left: 20px; /* Add padding on the left to avoid text being too close to the edge */
+}
+
+/* Optional: Space between paragraphs inside each description */
+.left-description p, .right-description p {
+    margin-bottom: 15px; /* Add space between paragraphs */
+}
+
+/* Adjust margin for the right description to prevent cramping */
+.right-description p:last-child {
+    margin-bottom: 0; /* Remove margin from the last paragraph */
+}
+
+/* Ensuring the text inside descriptions does not touch the container edges */
+.who-are-we .descriptions > div {
+    padding: 0; /* Remove internal padding */
+}
+
+
+/* Key Services Section */
+.key-services {
+    width: 90%;
+    margin: 80px auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    background-color: rgba(0, 0, 0, 0.35); /* Black with 60% opacity */
+    border-radius: 8px; /* Optional: round the corners*/
+    padding: 40px; /* Add padding for space around content */
+}
+
+/* Left Side (Text Content) */
+.key-services .text-content {
+    width: 50%;
+    color: white;
+}
+
+.key-services .text-content h2 {
+    font-size: 3rem;
+    color: #B8860B;
+    margin-bottom: 25px;
+}
+
+.key-services .text-content .service {
+    margin-bottom: 20px;
+}
+
+/* Service Styling */
+.key-services .service {
+    display: flex;
+    align-items: center;
+   background-color: rgba(0, 0, 0, 0.2); /* Black with 60% opacity */
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.key-services .service:hover {
+    transform: translateY(-5px);
+    box-shadow: 2px 2px 15px rgba(255, 215, 0, 0.3);
+}
+
+/* Service Icons */
+.key-services .service .icon {
+    width: 60px;
+    height: 60px;
+    margin-right: 20px;
+}
+
+.key-services .service .icon img {
+    width: 100%;
+    height: auto;
+}
+
+
+/* Service Text */
+.key-services .service-text h3 {
+    font-size: 2rem;
+    color: #B8860B;
+    margin-bottom: 10px;
+}
+
+.key-services .service-text p {
+    font-size: 1.2rem;
+    color: white;
+}
+
+/* Right Side (Image with Overlay) */
+.key-services .image-container {
+    position: relative;
+    width: 45%;
+}
+
+.key-services .image-container img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Text Overlay on Image */
+.key-services .image-overlay {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #B8860B;
+    padding: 10px 20px;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 8px;
+}
+
+/* Key Services 2 Section Styling */
+.key-services-2 {
+    width: 90%;
+    margin: 50px auto;
+    padding: 40px;
+   background-color: rgba(0, 0, 0, 0.35); /* Black with 60% opacity */
+    border-radius: 8px;
+    text-align: left;
+}
+
+.key-services-2-header {
+    margin-bottom: 20px;
+}
+
+.key-services-2-title {
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: #B8860B;
+    text-align: right;
+}
+
+.key-services-2-subtitle {
+    font-size: 2.3rem;
+    font-weight: 500;
+    color: #B8860B;
+    margin-bottom: 10px;
+}
+
+.key-services-2-description {
+    font-size: 1.5rem;
+    color: white;
+    line-height: 1.6;
+}
+
+.key-services-2-golden-line {
+    width: 100%;
+    height: 3px;
+    background-color: #B8860B;
+    margin: 30px 0;
+}
+
+.key-services-2-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.key-services-2-image-container {
+    width: 30%;
+    position: relative;
+    text-align: center;
+}
+
+.key-services-2-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.key-services-2-image-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    margin-top: 10px;
+}
+
+.key-services-2-points {
+    margin-top: 10px;
+    background-color: rgba(0, 0, 0, 0.2); /* Black with 60% opacity */
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    font-size: 1.3rem;
+}
+
+
+
+/* Key Services 3 Section Styling */
+.key-services-3 {
+    width: 90%;
+    margin: 50px auto;
+    padding: 40px;
+    background-color: rgba(0, 0, 0, 0.35); /* Black with 60% opacity */
+    border-radius: 8px;
+    text-align: left;
+}
+
+.key-services-3-header {
+    margin-bottom: 20px;
+}
+
+.key-services-3-title {
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: #B8860B;
+    text-align: right;
+}
+
+.key-services-3-subtitle {
+    font-size: 4rem;
+    font-weight: 500;
+    color: #B8860B;
+    margin-bottom: 10px;
+}
+
+.key-services-3-description {
+    font-size: 1.5rem;
+    color: white;
+    line-height: 1.6;
+}
+
+.key-services-3-description1 {
+    font-size: 2.3rem;
+    color: #B8860B;
+    line-height: 1.6;
+    margin-top:0;
+}
+
+.key-services-3-golden-line {
+    width: 100%;
+    height: 3px;
+    background-color: #B8860B;
+    margin: 30px 0;
+}
+
+.key-services-3-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.key-services-3-image-container {
+    width: 40%;
+    position: relative;
+    text-align: center;
+}
+
+.key-services-3-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.key-services-3-image-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    margin-top: 10px;
+}
+
+.key-services-3-points {
+    margin-top: 10px;
+    background-color: rgba(0, 0, 0, 0.2); /* Black with 60% opacity */
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    font-size: 1.3rem;
+}
+
+
+
+.conclusion-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: 50px auto;
+    padding: 40px;
+    background-color: rgba(0, 0, 0, 0.35); /* Black with 60% opacity */
+    border-radius: 8px;
+   
+    gap: 40px; /* Adds gap between left and right */
+}
+
+.conclusion-left {
+    width: 48%;
+    text-align: left;
+}
+
+.conclusion-image-container {
+    position: relative;
+    width: 100%;
+}
+
+.conclusion-banner {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.conclusion-overlay-text {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #B8860B;
+    background: rgba(0, 0, 0, 0.5); /* Translucent background */
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.conclusion-text {
+    margin-top: 20px;
+}
+
+.conclusion-description {
+    font-size: 1.4rem; /* Bigger size */
+    color: white;
+    margin: 21px 0;
+    line-height: 1.8;
+    font-weight: 500;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+/* Background colors for descriptions */
+.desc-bg-1 { background-color: rgba(0, 0, 0, 0.3); /* Black with 60% opacity */} 
+.desc-bg-2 { background-color: rgba(0, 0, 0, 0.3); /* Black with 60% opacity */}
+.desc-bg-3 { background-color: rgba(0, 0, 0, 0.3); /* Black with 60% opacity */ } 
+.desc-bg-4 { background-color: rgba(0, 0, 0, 0.3); /* Black with 60% opacity */ }
+
+.conclusion-right {
+    width: 48%;
+    height: 100%;
+}
+
+.conclusion-main-image {
+    width: 100%;
+    height: auto;
+    
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Footer Styling */
+.footer {
+    background-color: #121212;
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+/* Logo at the Top */
+.footer-logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.footer-logo img {
+    width: 250px; /* Adjust size as needed */
+    height: auto;
+}
+
+/* Footer Container */
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Footer Sections */
+.footer-section {
+    flex: 1;
+    padding: 15px;
+    min-width: 250px;
+}
+
+.pages, .social {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.footer-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: gold;
+}
+
+/* Links */
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin: 5px 0;
+     margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: gold;
+}
+
+.social-icons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    transform: translateY(-140px); /* Moves the icons up */
+}
+
+
+.social-icons a img {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s ease;
+}
+
+.social-icons a:hover img {
+    transform: scale(1.1);
+}
+
+/* Copyright */
+.footer-bottom {
+    background-color: #0d0d0d;
+    padding: 15px 0;
+    margin-top: 20px;
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 1rem;
+    color: #aaa;
+}
+
+.social-icon {
+    font-size: 30px;
+    color: white;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icon {
+    font-size: 30px;
+    color: white;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icon:hover {
+    color: gold;
+    transform: scale(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+

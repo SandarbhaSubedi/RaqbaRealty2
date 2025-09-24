@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{normal/base::layout(~{::section})}">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Property Details</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+
+<body>
+    <section>
+        <div class="card mr-3 ml-3">
+            <div class="card-body">
+                <h1 class="text-center">Edit Property Details</h1>
+
+                <div class="container-fluid mt-1">
+                    <div class="row">
+                        <div class="col-md-8 offset-md-2">
+                            <!-- Form for updating property -->
+                            <form action="#" 
+                                  th:object="${property}" 
+                                  enctype="multipart/form-data" 
+                                  method="POST" 
+                                  th:action="@{/admin/process-update-property}" 
+                                  class="mt-2">
+
+                                <!-- Property Name -->
+                                 <div class="form-group mt-3">
+                                    <label for="name">Property Name</label>
+                                    <input required type="text" id="name" name="name" 
+                                           th:value="${property.name}" 
+                                           class="form-control" placeholder="Enter Property Name">
+                                </div>
+                                
+
+                                <!-- Property Location -->
+                                <div class="form-group mt-3">
+                                    <label for="location">Location</label>
+                                    <input required type="text" id="location" name="location" 
+                                           th:value="${property.location}" 
+                                           class="form-control" placeholder="Enter Location">
+                                </div>
+
+                                <!-- Property Type -->
+                                <div class="form-group mt-3">
+                                    <label for="type">Type</label>
+                                    <input required type="text" id="type" name="type" 
+                                           th:value="${property.type}" 
+                                           class="form-control" placeholder="Enter Property Type">
+                                </div>
+
+                                <!-- Currency -->
+                                <div class="form-group mt-3">
+                                    <label for="currency">Currency</label>
+                                    <input required type="text" id="currency" name="currency" 
+                                           th:value="${property.currency}" 
+                                           class="form-control" placeholder="Enter Currency">
+                                </div>
+
+                                <!-- Description -->
+                                <div class="form-group mt-3">
+                                    <label for="description">Description</label>
+                                    <textarea required id="description" name="description" rows="5" 
+                                              class="form-control" 
+                                              placeholder="Enter Property Description"
+                                              th:text="${property.description}"></textarea>
+                                </div>
+                                
+                                </div>
+
+                                
+                                <!-- area -->
+                                <div class="form-group mt-3">
+                                    <label for="area">Currency</label>
+                                    <input required type="text" id="area" name="area" 
+                                           th:value="${property.area}" 
+                                           class="form-control" placeholder="Enter area">
+                                </div>
+
+                                <!-- Property Image -->
+                                <div class="form-group mt-3">
+                                    <label for="image">Upload Image</label>
+                                    <input type="file" id="image" name="image" class="form-control">
+                                    <img th:src="@{/img/{property.image}(property.image=${property.image})}" 
+                                         alt="Property Image" 
+                                         class="img-thumbnail mt-2" style="max-height: 200px;">
+                                </div>
+
+                                <!-- Submit Button -->
+                                <div class="text-center mt-5">
+                                    <button type="submit" class="btn btn-primary">Update Property</button>
+                                </div>
+                            </form>
+
+                            <!-- Back to Dashboard Link -->
+                            <div class="text-center mt-3">
+                                <a th:href="@{/admin/adminpanel}" class="btn btn-secondary">Back to Admin Panel</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Properties</title>
+    <link rel="stylesheet" href="styles.css"> <!-- You can link to your CSS file for styling -->
+</head>
+<body>
+    <div class="container">
+        <h1>Available Properties</h1>
+        <div th:if="${properties != null and properties.size() > 0}">
+            <h2>Your Properties</h2>
+            <ul>
+                <li th:each="property : ${properties}">
+                    <div class="property-card">
+                        <img th:src="@{${property.photos}}" alt="Property Image" class="property-image" />
+                        <div class="property-info">
+                        <h3 th:text="${property.pId}"></h3>
+                            <h3 th:text="${property.name}"></h3>
+                            <p><strong>Location:</strong> <span th:text="${property.location}"></span></p>
+                            <p><strong>Type:</strong> <span th:text="${property.type}"></span></p>
+                            <p><strong>Area:</strong> <span th:text="${property.area}"></span></p>
+                            <p><strong>Currency:</strong> <span th:text="${property.currency}"></span></p>
+                            <p th:if="${property.description != null}">
+                                <strong>Description:</strong> <span th:text="${property.description}"></span>
+                            </p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div th:if="${properties == null or properties.size() == 0}">
+            <p>No properties available for you at the moment.</p>
+        </div>
+    </div>
+    
+    <!-- Add Property Form -->
+    <section>
+        <h2>Add Property</h2>
+        <form action="/user/properties" method="POST">
+            <label for="pId">Property ID:</label>
+            <input type="number" id="pId" name="pId" placeholder="Enter Property ID" required><br><br>
+
+            <label for="name">Property Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter Property Name" required><br><br>
+
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" placeholder="Enter Location" required><br><br>
+
+            <label for="description">Description:</label><br>
+            <textarea id="description" name="description" placeholder="Enter Description" rows="4" cols="50"></textarea><br><br>
+
+            <label for="type">Type:</label>
+            <input type="text" id="type" name="type" placeholder="Enter Type" required><br><br>
+            
+            <label for="area">Area:</label>
+            <input type="text" id="area" name="area" placeholder="Enter Area" required><br><br>
+            
+            <label for="currency">Currency:</label>
+            <input type="text" id="currency" name="currency" placeholder="Enter Currency" required><br><br>
+
+            <button type="submit">Add Property</button>
+        </form>
+    </section>
+
+    <hr>
+
+    <!-- Upload Photos Form -->
+    <section>
+        <h2>Upload Photos for Property</h2>
+        <form action="/user/properties/upload" method="POST" enctype="multipart/form-data">
+            <label for="property_p_id">Property ID:</label>
+            <input type="number" id="property_p_id" name="property_p_id" placeholder="Enter Property ID" required><br><br>
+
+            <label for="photos">Select Photos:</label>
+            <input type="file" id="photos" name="photos" multiple required><br><br>
+
+            <button type="submit">Upload Photos</button>
+        </form>
+    </section>
+
+    <hr>
+
+    <!-- Success or Error Message -->
+    <section>
+        <p th:text="${message}"></p> <!-- Display success or error message -->
+    </section>
+
+
+  
+
+   
+
+    
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Multiple Images</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+              body {
+            background-color:black;
+            font-family: Arial, sans-serif;
+        }
+        .navbar {
+            background-color: #343a40;
+            padding: 15px 20px;
+        }
+        .navbar .nav-link {
+            color: #ffffff;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .navbar .nav-link:hover, .navbar .nav-link.active {
+            color: #ffc107;
+        }
+        .logo-img {
+            height: 80px;
+            width: auto;
+        }
+        .container {
+            background:black;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 700px;
+            margin-top: 30px;
+            color : white;
+            box-shadow: 0px 0px 20px rgba(212, 175, 55, 0.8); /* golden glow */
+            border: 2px solid gold; /* proper border */
+        }
+        .preview-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .preview-container img {
+            max-width: 120px;
+            max-height: 120px;
+            border: 1px solid #ddd;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        .form-label {
+            font-weight: bold;
+        }
+        .btn-upload {
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/user/admindashboard">
+            <img src="/img/logo.png" alt="Logo" class="logo-img">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="admindashboard" th:classappend="${page == 'admindashboard'} ? 'active' : ''">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="viewContacts" th:classappend="${page == 'contacts'} ? 'active' : ''">Contacts</a></li>
+                <li class="nav-item"><a class="nav-link" href="upload" th:classappend="${page == 'upload'} ? 'active' : ''">Upload</a></li>
+                <li class="nav-item"><a class="nav-link" href="usergallery" th:classappend="${page == 'usergallery'} ? 'active' : ''">Gallery</a></li>
+                <li class="nav-item"><a class="nav-link" href="adminreviews" th:classappend="${page == 'areviews'} ? 'active' : ''">approvereview</a></li>
+                <li class="nav-item"><a class="nav-link" href="admin-rent" th:classappend="${page == 'rent'} ? 'active' : ''">RentRequest</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    <div class="container">
+        <h2 class="text-center mb-4">Upload Multiple Images</h2>
+        <form id="uploadForm" enctype="multipart/form-data">
+            <input type="hidden" id="imageId" name="imageId">
+
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label for="userId" class="form-label">User ID:</label>
+                    <input type="number" id="userId" name="userId" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="description" class="form-label">Description:</label>
+                    <input type="text" id="description" name="description" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="name" class="form-label">Name:</label>
+                    <input type="text" id="name" name="name" class="form-control" required>
+                </div>
+                  <div class="col-md-6">
+                <label for="title" class="form-label">Title:</label>
+                <select id="title" name="title" class="form-control" required>
+                    <option value="Primary">Primary</option>
+                    <option value="Secondary">Secondary</option>
+                </select>
+            </div>
+                      <div class="col-md-6">
+                <label for="type" class="form-label">Type:</label>
+                <select id="type" name="type" class="form-control" required>
+                    <option value="Buy">Buy</option>
+                    <option value="Rent">Rent</option>
+                    <option value="Offplan">Off-plan</option>
+                </select>
+            </div>
+                    <div class="col-md-6">
+                <label for="bedroom" class="form-label">Bedroom:</label>
+                <select id="bedroom" name="bedroom" class="form-control" required>
+                    <script>
+                        for (let i = 1; i <= 20; i++) {
+                            document.write(`<option value="${i}">${i}</option>`);
+                        }
+                    </script>
+                </select>
+            </div>
+                <div class="col-md-6">
+                    <label for="currency" class="form-label">Currency:</label>
+                    <input type="text" id="currency" name="currency" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="location" class="form-label">Location:</label>
+                    <input type="text" id="location" name="location" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="furnishing" class="form-label">Furnishing:</label>
+                    <input type="text" id="furnishing" name="furnishing" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="feature" class="form-label">Feature:</label>
+                    <input type="text" id="feature" name="feature" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="consultant" class="form-label">Consultant:</label>
+                    <input type="text" id="consultant" name="consultant" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="area" class="form-label">Area:</label>
+                    <input type="text" id="area" name="area" class="form-control" required>
+                </div>
+                  <div class="col-md-6">
+                <label for="faculty" class="form-label">Faculty:</label>
+                <select id="faculty" name="faculty" class="form-control" required>
+                    <option value="Studio">Studio</option>
+                    <option value="Apartment">Apartment</option>
+                    <option value="Bungalow">Bungalow</option>
+                    <option value="House">House</option>
+                </select>
+            </div>
+                <div class="col-md-6">
+                <label for="exclusives" class="form-label">Exclusives:</label>
+                <select id="exclusives" name="exclusives" class="form-control" required>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+
+                <!-- New Fields -->
+                <div class="col-md-6">
+                    <label for="rerano" class="form-label">Rera No:</label>
+                    <input type="text" id="rerano" name="rerano" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="referenceno" class="form-label">Reference No:</label>
+                    <input type="text" id="referenceno" name="referenceno" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="dldpno" class="form-label">DLD Permit No:</label>
+                    <input type="text" id="dldpno" name="dldpno" class="form-control" required>
+                </div>
+                
+                  <div class="col-md-6">
+                <label for="field" class="form-label">Field:</label>
+                <select id="field" name="field" class="form-control" required>
+                    <option value="Residental">Residential</option>
+                    <option value="Commercial">Commercial</option>
+                    <option value="Land">Land</option>
+                   
+                </select>
+            </div>
+
+                <div class="col-md-12">
+                    <label for="files" class="form-label">Upload Images:</label>
+                    <input type="file" id="files" name="files" multiple class="form-control" accept="image/*" required onchange="previewImages()">
+                </div>
+
+                <!-- Image Previews -->
+                <div class="col-md-12">
+                    <div class="preview-container" id="imagePreviewContainer"></div>
+                </div>
+
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-primary btn-upload mt-3" onclick="uploadImages()">Upload</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        function generateImageId() {
+            return 'IMG-' + Math.floor(Math.random() * 1000000);
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("imageId").value = generateImageId();
+        });
+
+        function previewImages() {
+            const previewContainer = document.getElementById('imagePreviewContainer');
+            previewContainer.innerHTML = '';
+
+            const files = document.getElementById('files').files;
+            if (files) {
+                for (let i = 0; i < files.length; i++) {
+                    const file = files[i];
+                    const reader = new FileReader();
+
+                    reader.onload = function(event) {
+                        const img = document.createElement('img');
+                        img.src = event.target.result;
+                        previewContainer.appendChild(img);
+                    };
+
+                    reader.readAsDataURL(file);
+                }
+            }
+        }
+
+        function uploadImages() {
+            const formData = new FormData();
+            const fields = ["imageId", "userId", "description", "name", "title", "type", "bedroom", "currency", "location", "furnishing", "feature", "consultant", "area", "faculty", "exclusives", "rerano", "referenceno", "dldpno", "field"];
+
+            fields.forEach(field => {
+                formData.append(field, document.getElementById(field).value);
+            });
+
+            for (let file of document.getElementById("files").files) {
+                formData.append("files", file);
+            }
+
+            fetch("/user/upload", { method: "POST", body: formData })
+                .then(response => response.text())
+                .then(data => alert(data))
+                .catch(error => console.error("Upload failed:", error));
+        }
+    </script>
+
+</body>
+</html>

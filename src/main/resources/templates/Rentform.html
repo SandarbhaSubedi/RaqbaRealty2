@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Rent Property Request</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Rent Property Page Styles */
+ body {
+            font-family: 'Poppins', sans-serif;
+            background: black;
+            color: white;
+        }
+                            .navbar {
+    background: transparent; /* remove solid background */
+    padding: 10px 0;
+    position: absolute; /* place navbar over hero */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10; /* keep navbar on top */
+}
+
+        .logo-img {
+            width: 250px;
+            height: auto;
+        }
+
+        .navbar-nav .nav-link {
+            color: white !important;
+            font-weight: 600;
+            padding: 8px 15px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: #ffc107 !important;
+            font-weight: bold;
+            
+        }
+
+        .follow-us {
+            color: white;
+            font-weight: bold;
+            margin-left: 20px;
+        }
+        
+        
+          .hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align : center;
+    padding: 80px 100px;
+    min-height: 80vh;
+    background: url("img/rentbg.jpg") center center / cover no-repeat;
+    overflow: hidden;
+
+    
+}
+
+/* Dark overlay for better text contrast */
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.4));
+    z-index: 1;
+}
+
+
+
+.hero-content {
+    position: relative;
+    z-index: 2; /* Keep text above overlay */
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* Text container */
+.hero-text {
+    color: white;
+}
+
+/* Animations remain unchanged */
+.fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 2s ease forwards;
+}
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+.golden-text {
+    background: linear-gradient(90deg, #ffc107, #ffd700, #ffc107);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.2rem;
+}
+
+
+        
+        
+.rent-form-section {
+  background: #000; /* black background */
+  color: #fff;
+}
+
+.rent-form-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+
+/* Left Info */
+.rent-info .subtitle {
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: gold;
+}
+
+.rent-info h2 {
+  font-size: 32px;
+  font-weight: bold;
+  margin: 15px 0;
+  line-height: 1.3;
+}
+
+.rent-info .description {
+  color: #aaa;
+  margin-bottom: 20px;
+}
+
+.rent-info .contact-details p {
+  margin: 8px 0;
+  font-size: 15px;
+  color: #ccc;
+}
+
+.rent-info .contact-details i {
+  color: gold;
+  margin-right: 8px;
+}
+
+/* Form Card */
+.rent-form-card {
+  background: #000;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.4); /* glowing shadow */
+}
+
+.rent-form-card h2 {
+  color: #fff;
+}
+
+/* Form Rows */
+.rent-form-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.rent-form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.rent-form-group.full-width {
+  flex: 100%;
+}
+
+/* Inputs & Selects */
+.rent-form-card input,
+.rent-form-card select {
+  padding: 12px 15px;
+  border: 1px solid gold;
+  border-radius: 8px;
+  background: #111;
+  color: #fff;
+}
+
+.rent-form-card input::placeholder {
+  color: white;
+}
+
+.rent-form-card select {
+  color: white;
+}
+
+/* Submit Button */
+.rent-submit-btn {
+  background: gold;
+  border: none;
+  border-radius: 8px;
+  padding: 14px;
+  color: black;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.rent-submit-btn:hover {
+  background: #d4af37;
+  color:black;
+}
+
+/* Success Alert */
+.rent-alert {
+  margin-top: 10px;
+  padding: 12px;
+  background: rgba(40, 167, 69, 0.2);
+  border-left: 4px solid #28a745;
+  color: #28a745;
+  border-radius: 8px;
+}
+
+                    /* Footer Container */
+footer {
+    background: linear-gradient(135deg, #1f1f1f, #2a1a2e);
+    color: white;
+    padding: 40px 60px;
+    font-family: Arial, sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+/* Left Section: Logo & Tagline */
+.footer-left {
+    max-width: 250px;
+}
+
+.footer-logo {
+    width: 180px; /* Adjust logo size */
+}
+
+.footer-tagline {
+    font-size: 0.9rem;
+    margin-top: 5px;
+    opacity: 0.8;
+}
+
+/* Middle Section: Navigation Links */
+.footer-middle {
+    display: flex;
+    gap: 40px;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.footer-column a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer-column a:hover {
+    color: gold;
+}
+
+/* Right Section: Location & Social Icons */
+.footer-right {
+    text-align: right;
+}
+
+.footer-location {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.footer-address {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-bottom: 10px;
+}
+
+/* Social Icons */
+.footer-social {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+    justify-content: flex-end;
+}
+
+.footer-social a {
+    color: white;
+    font-size: 1.5rem;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer-social a:hover {
+    color: gold;
+}
+
+/* Call Us Button */
+.call-us-button {
+            border: 2px solid gold;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 1rem;
+            background: transparent;
+            color: white;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+.call-us-button:hover {
+    background-color: gold;
+    color: black;
+}
+
+/* Bottom Footer Section */
+.footer-bottom {
+    border-top: 2px solid gold;
+    margin-top: 30px;
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer-links a:hover {
+    color: gold;
+}
+    </style>
+</head>
+
+
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+            <img src="/img/logo.png" alt="Logo" class="logo-img">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+                      <li>
+                      <a class="nav-link" href="/" th:classappend="${page == 'home'} ? 'active' : ''">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about" th:classappend="${page == 'about'} ? 'active' : ''">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/contact}" th:classappend="${page == 'contact'} ? 'active' : ''">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/sell" th:classappend="${page == 'sell'} ? 'active' : ''">Sell</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/buy" th:classappend="${page == 'buy'} ? 'active' : ''">Buy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Rentform" th:classappend="${page == 'rent'} ? 'active' : ''">Rent</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="/offplan" th:classappend="${page == 'offplan'} ? 'active' : ''">OffPlan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/submitReview}" th:classappend="${page == 'submitReview'} ? 'active' : ''">Review</a>
+                    </li>
+                
+            </ul>
+            <span class="follow-us">Follow Us</span>
+        </div>
+    </div>
+</nav>
+
+
+<section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <div class="hero-text">
+            <h6 class="fade-up delay-1 golden-text">Your trusted partner for everything UAE Real Estate.”</h6>
+            <p class="firstp fade-up delay-2 golden-text">WE’RE MORE THAN JUST A REAL ESTATE FIRM.</p>
+            <h3 class="secondp fade-up delay-3 shimmer">
+                RENT PROPERTY <br> PROVIDE YOUR REQUIREMENT
+            </h3>
+        </div>
+    </div>
+</section>
+
+
+<div class="rent-form-section py-5">
+  <div class="container">
+    <div class="rent-form-wrapper">
+
+      <!-- Left Info -->
+      <div class="rent-info">
+        <p class="subtitle">FIND YOUR PERFECT RENTAL</p>
+        <h2>Submit <br>Your Rent Request</h2>
+        <p class="description">
+          Tell us what kind of property you are looking for, and we’ll connect you with the best available options.
+        </p>
+        <div class="contact-details">
+          <p><i class="fas fa-envelope"></i> info@raqbarealty.com</p>
+          <p><i class="fas fa-phone"></i>  +971 55 635 6640</p>
+        </div>
+      </div>
+
+      <!-- Right Form -->
+      <div class="rent-form-card">
+        <h2 class="text-center mb-4 fw-bold">Rent Property Request</h2>
+        <form th:action="@{/rent/submit}" th:object="${rentRequest}" method="post">
+<div th:if="${param.success}" class="rent-alert mt-3">
+            Your request has been submitted!
+          </div>
+          <div class="rent-form-row">
+            <div class="rent-form-group">
+              <input type="text" th:field="*{number}" placeholder="Phone Number" required>
+            </div>
+            <div class="rent-form-group">
+              <input type="email" th:field="*{email}" placeholder="Email Address" required>
+            </div>
+          </div>
+
+          <div class="rent-form-row">
+            <div class="rent-form-group">
+              <select th:field="*{propertyType}" required>
+                <option value="">-- Select property type --</option>
+                <option value="Apartment">Apartment</option>
+                <option value="Villa">Villa</option>
+                <option value="Townhouse">Townhouse</option>
+              </select>
+            </div>
+            <div class="rent-form-group">
+              <select th:field="*{requirement}" required>
+                <option value="">-- Select requirement --</option>
+                <option value="1 Bedroom Apartment">1 Bedroom Apartment</option>
+                <option value="2 Bedroom Apartment">2 Bedroom Apartment</option>
+                <option value="3 Bedroom Apartment">3 Bedroom Apartment</option>
+                <option value="4+ Bedroom Apartment">4+ Bedroom Apartment</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="rent-form-row">
+            <div class="rent-form-group full-width">
+              <input type="text" th:field="*{location}" placeholder="Desired Location" required>
+            </div>
+          </div>
+
+          <button type="submit" class="rent-submit-btn w-100">Submit Request</button>
+
+          
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<footer>
+    <div class="footer-container">
+        <!-- Left Section: Logo -->
+        <div class="footer-left">
+            <img src="/img/logo.png" alt="logo-of-footer" class="footer-logo">
+            <p class="footer-tagline">WHERE DREAMS MEET REALITY</p>
+        </div>
+
+        <!-- Middle Section: Navigation Links -->
+        <div class="footer-middle">
+            <div class="footer-column">
+                <a href="#">Apartments</a>
+                <a href="#">Penthouses</a>
+                <a href="#">Villas</a>
+                <a href="#">Townhouses</a>
+                <a href="#">Off-Plan</a>
+            </div>
+            <div class="footer-column">
+                <a href="#">Catalogs</a>
+                <a href="#">Area Guides</a>
+                <a href="#">Sell</a>
+                <a href="#">Rent</a>
+                <a href="#">Developers</a>
+            </div>
+            <div class="footer-column">
+                <a href="#">Raqba Realty</a>
+                <a href="#">Reviews</a>
+                <a href="#">Careers</a>
+                <a href="#">Contact Us</a>
+            </div>
+        </div>
+
+        <!-- Right Section: Contact Info & Social Icons -->
+        <div class="footer-right">
+            <p class="footer-location"><strong>Dubai, UAE</strong></p>
+            <p class="footer-address">Al Bahar Building, Al Khabesi Area, Deira</p>
+            
+            <div class="footer-social">
+                <a href="#"><i class="fas fa-envelope"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-x-twitter"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+
+            <a href="tel:+9800000000" class="call-us-button mt-3">Call Us</a>
+        </div>
+    </div>
+
+    <!-- Bottom Footer Section -->
+    <div class="footer-bottom">
+        <p>RAQBA REALTY ©2025, All Rights Reserved</p>
+        <div class="footer-links">
+            <a href="#">Terms of Use</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Sitemap</a>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init();
+</script>
+</body>
+</html>

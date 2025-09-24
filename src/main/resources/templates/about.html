@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+<style>
+
+ body {
+             font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1f1f1f, #2a1a2e);
+            color: white;
+        }
+        
+             .navbar {
+    background: transparent; /* remove solid background */
+    padding: 10px 0;
+    position: absolute; /* place navbar over hero */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10; /* keep navbar on top */
+}
+
+
+        .logo-img {
+            width: 250px;
+            height: auto;
+        }
+
+        .navbar-nav .nav-link {
+            color: white !important;
+            font-weight: 600;
+            padding: 8px 15px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: #ffc107 !important;
+            font-weight: bold;
+            
+        }
+
+        .follow-us {
+            color: white;
+            font-weight: bold;
+            margin-left: 20px;
+        }
+        
+         .hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align : center;
+    padding: 80px 100px;
+    min-height: 80vh;
+    background: url("img/aboutbg.jpg") center center / cover no-repeat;
+    overflow: hidden;
+
+    
+}
+
+/* Dark overlay for better text contrast */
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.8));
+    z-index: 1;
+}
+
+
+
+.hero-content {
+    position: relative;
+    z-index: 2; /* Keep text above overlay */
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* Text container */
+.hero-text {
+    color: white;
+}
+
+/* Animations remain unchanged */
+.fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 2s ease forwards;
+}
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+.golden-text {
+    background: linear-gradient(90deg, #ffc107, #ffd700, #ffc107);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.2rem;
+}
+
+
+
+        
+        
+
+
+          
+        /* About Section */
+        .about-section {
+            padding: 60px 0;
+              background: black;
+        }
+
+        
+
+        .intro-text {
+            font-size: 1.8rem;
+            font-weight: semi-bold;
+        }
+
+        .secondintro-text {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .secondintro-text span {
+            color: #FFD700;
+        }
+
+        .description {
+            font-size: 1.1rem;
+       
+       
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        
+       /* Who Are We */
+.who-are-we {
+    padding: 60px 0;
+     background: 
+        linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), 
+        url("img/back.jpg") center center / cover no-repeat;
+}
+
+.who-are-we h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: gold;
+   
+}
+
+.who-are-we p {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    color: white;
+}
+
+/* Images with hover zoom */
+.image-container {
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0px 4px 20px rgba(0,0,0,0.1);
+}
+
+.image-container img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.image-container img:hover {
+    transform: scale(1.05);
+}
+
+/* Collaborated Agency */
+.collaboratedagency {
+ 
+    padding: 50px 0;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.trusted-agency h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 30px;
+}
+
+.trusted-agency h2 span {
+    color: #FFD700;
+}
+
+/* Scrolling logos */
+.agency-logos-wrapper {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.agency-logos {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    animation: scrollRightToLeft 20s linear infinite;
+}
+
+.agency-logos img {
+    height: 60px;
+    object-fit: contain;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.agency-logos img:hover {
+    filter: grayscale(0%);
+    transform: scale(1.1);
+}
+
+@keyframes scrollRightToLeft {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* Golden Line */
+.golden-line {
+    height: 3px;
+    background: linear-gradient(to right, gold, transparent);
+    margin: 40px 0;
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    .agency-logos img {
+        height: 40px;
+    }
+    .who-are-we h3,
+    .trusted-agency h2 {
+        font-size: 1.5rem;
+    }
+    .image-container img {
+        height: 200px;
+    }
+}
+       
+       
+  /* Key Services Section */
+.key-services {
+     background: 
+        linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), 
+        url("img/bg2.jpg") center center / cover no-repeat;
+    border-radius: 20px;
+    padding: 60px;
+    color: white;
+    box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Title */
+.key-services h3 {
+    color: gold;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Individual Service */
+.key-services .service {
+     background: linear-gradient(135deg, #1f1f1f, #2a1a2e);
+    padding: 15px;
+    border-radius: 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+.key-services .service:hover {
+    background: rgba(255, 215, 0, 0.15);
+    transform: translateY(-5px);
+    box-shadow: 0px 4px 20px rgba(255, 215, 0, 0.4);
+}
+
+.key-services .service img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 50%;
+    background: rgba(255, 215, 0, 0.1);
+    padding: 10px;
+}
+
+/* Text Styling */
+.key-services .service h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.key-services .service p {
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+/* Right Side Image */
+.key-services .image-container {
+    position: relative;
+    display: inline-block;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0px 4px 20px rgba(255, 215, 0, 0.3);
+    animation: floatImage 5s ease-in-out infinite;
+}
+
+.key-services .image-container img {
+    border-radius: 20px;
+    transition: transform 0.5s ease;
+}
+
+.key-services .image-container:hover img {
+    transform: scale(1.05);
+}
+
+/* Golden Overlay Text */
+.key-services .image-overlay {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: rgba(255, 215, 0, 0.85);
+    color: black;
+    padding: 8px 20px;
+    font-weight: bold;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    box-shadow: 0px 4px 15px rgba(255, 215, 0, 0.4);
+}
+
+/* Floating Animation */
+@keyframes floatImage {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .key-services {
+        padding: 30px;
+    }
+    .key-services h3 {
+        font-size: 1.5rem;
+    }
+    .key-services .service {
+        text-align: center;
+        flex-direction: column;
+    }
+    .key-services .service img {
+        margin-bottom: 10px;
+    }
+}
+
+
+/* Key Services 2 */
+.key-services2 {
+     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65) 85%, rgba(0, 0, 0, 0) 100%);
+    border-radius: 20px;
+    padding: 60px;
+    color: white;
+    box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Section Headings */
+.key-services2 h3 {
+    color: gold;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.key-services2 h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.key-services2 p {
+    opacity: 0.85;
+    font-size: 1rem;
+}
+
+/* Golden Divider */
+.key-services2 .golden-line {
+    height: 3px;
+    background: linear-gradient(90deg, gold, rgba(255,215,0,0.4));
+    width: 80px;
+    margin: 30px 0;
+}
+
+/* Cards */
+.key-services2 .card {
+   background: linear-gradient(135deg, #1f1f1f, #2a1a2e);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    height: 100%;
+    box-shadow: 0 4px 20px rgba(255, 215, 0, 0.1);
+}
+
+.key-services2 .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0px 8px 30px rgba(255, 215, 0, 0.4);
+}
+
+/* Card Images */
+.service-icon {
+    font-size: 70px;
+    color: #b8860b; /* Dark Gold */
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.service-icon:hover {
+    transform: scale(1.1);
+    color: #daa520; /* lighter dark gold on hover */
+}
+
+/* Card Titles */
+.key-services2 .card-title {
+    color: gold;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 15px;
+}
+
+/* List Styling */
+.key-services2 ul {
+    padding-left: 0;
+    margin-top: 10px;
+}
+
+.key-services2 ul li {
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+/* Checkmark Styling */
+.key-services2 ul li::before {
+    content: "✔";
+    color: gold;
+    margin-right: 8px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .key-services2 {
+        padding: 30px 15px;
+    }
+    .key-services2 h2 {
+        font-size: 1.6rem;
+    }
+    .key-services2 .card img {
+        height: 180px;
+    }
+}
+
+        
+        
+        
+        .golden-text { color: #FFD700; }
+        .golden-line { height: 3px; background-color: #FFD700; margin: 10px 0; }
+        
+  /* ===== KEY SERVICES 3 SECTION ===== */
+
+.key-services-3 {
+ background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), 
+        url("img/homebg.jpg") center center / cover no-repeat;;
+    
+    font-family: 'Poppins', sans-serif;
+}
+
+.key-services-3-title {
+    font-size: 1.2rem;
+    color: #FFD700;
+    letter-spacing: 2px;
+    font-weight: 600;
+    text-transform: uppercase;
+    animation: shimmer 5s linear infinite;
+    background: linear-gradient(90deg, #FFD700, #fff6cc, #FFD700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.key-services-3-subtitle {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.key-services-3-description1 {
+    font-size: 1.1rem;
+   
+    color: #FFD700;
+    animation: shimmer 5s linear infinite;
+    background: linear-gradient(90deg, #FFD700, #fff6cc, #FFD700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Golden Line with subtle breathing glow */
+.key-services-3-golden-line {
+    height: 4px;
+    background: linear-gradient(to right, transparent, #FFD700, transparent);
+    margin: 20px 0 40px;
+    animation: glowLine 2s infinite ease-in-out;
+}
+
+/* ===== Service Images (Continuous Animation) ===== */
+.key-services-3-icon {
+    font-size: 70px;
+    color: #b8860b; /* Dark Gold */
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.key-services-3-icon:hover {
+    transform: scale(1.1);
+    color: #daa520; /* Slightly lighter gold on hover */
+}
+
+
+/* Service points text */
+.key-services-3-points p {
+    font-size: 0.95rem;
+    color: #ddd;
+    margin-top: 10px;
+}
+
+
+
+ /* ===== Conclusion Section ===== */
+.conclusion-section {
+    background-color: #000; /* Black background */
+    padding: 80px 20px;
+}
+
+.conclusion-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #d4af37; /* Gold */
+    margin-bottom: 20px;
+}
+
+.conclusion-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #fff; /* White text */
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+            /* Footer Container */
+footer {
+    background: linear-gradient(135deg, #1f1f1f, #2a1a2e);
+    color: white;
+    padding: 40px 60px;
+    font-family: Arial, sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+/* Left Section: Logo & Tagline */
+.footer-left {
+    max-width: 250px;
+}
+
+.footer-logo {
+    width: 180px; /* Adjust logo size */
+}
+
+.footer-tagline {
+    font-size: 0.9rem;
+    margin-top: 5px;
+    opacity: 0.8;
+}
+
+/* Middle Section: Navigation Links */
+.footer-middle {
+    display: flex;
+    gap: 40px;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.footer-column a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer-column a:hover {
+    color: gold;
+}
+
+/* Right Section: Location & Social Icons */
+.footer-right {
+    text-align: right;
+}
+
+.footer-location {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.footer-address {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-bottom: 10px;
+}
+
+/* Social Icons */
+.footer-social {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+    justify-content: flex-end;
+}
+
+.footer-social a {
+    color: white;
+    font-size: 1.5rem;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer-social a:hover {
+    color: gold;
+}
+
+/* Call Us Button */
+.call-us-button {
+            border: 2px solid gold;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 1rem;
+            background: transparent;
+            color: white;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+.call-us-button:hover {
+    background-color: gold;
+    color: black;
+}
+
+/* Bottom Footer Section */
+.footer-bottom {
+    border-top: 2px solid gold;
+    margin-top: 30px;
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer-links a:hover {
+    color: gold;
+}
+</style>
+        
+    
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+            <img src="/img/logo.png" alt="Logo" class="logo-img">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+                      <li>
+                      <a class="nav-link" href="/" th:classappend="${page == 'home'} ? 'active' : ''">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about" th:classappend="${page == 'about'} ? 'active' : ''">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/contact}" th:classappend="${page == 'contact'} ? 'active' : ''">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/sell" th:classappend="${page == 'sell'} ? 'active' : ''">Sell</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/buy" th:classappend="${page == 'buy'} ? 'active' : ''">Buy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Rentform" th:classappend="${page == 'rent'} ? 'active' : ''">Rent</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="/offplan" th:classappend="${page == 'offplan'} ? 'active' : ''">OffPlan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/submitReview}" th:classappend="${page == 'submitReview'} ? 'active' : ''">Review</a>
+                    </li>
+                
+            </ul>
+            <span class="follow-us">Follow Us</span>
+        </div>
+    </div>
+</nav>
+<section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <div class="hero-text">
+            <h6 class="fade-up delay-1 golden-text">Your trusted partner for everything UAE Real Estate.”</h6>
+            <p class="firstp fade-up delay-2 golden-text">WE’RE MORE THAN JUST A REAL ESTATE FIRM.</p>
+            <h3 class="secondp fade-up delay-3 shimmer">
+                ABOUT US <br> LICENSED REALESTATE AGENT
+            </h3>
+        </div>
+    </div>
+</section>
+
+
+
+
+<!-- About Us Section -->
+<section class="about-section">
+    <div class="container text-center">
+        <h3 class="intro-text">Experience The</h3>
+        <h3 class="secondintro-text">Epitome Of <span>Luxury</span> Living In Dubai</h3>
+        
+        <div class="row mt-4">
+            
+            <div>
+                <p class="description">
+                     Welcome to <span class="highlight">Raqba Realty</span>, where your dream property becomes a reality. Based in the heart of the UAE, we specialize in connecting people with exceptional real estate opportunities that match their aspirations.<span class="highlight">Raqba Realty</span> offers exclusive access to a wide range of premium properties, from opulent villas to stylish apartments and lucrative commercial spaces. Our partnerships with renowned developers ensure you have the best options to choose from.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="golden-line"></div>
+
+
+       <!-- Who Are We Section -->
+<section class="who-are-we">
+    <div class="container">
+        <!-- Title -->
+        <div class="row text-center">
+            <div class="col-12">
+                <h3>Who Are We?</h3>
+                <p>We are a team of dedicated real estate professionals committed to making your property journey smooth and successful. Whether you're buying, renting, or selling, we are here to help you every step of the way.</p>
+            </div>
+        </div>
+
+        <!-- Property Images -->
+        <div class="row images text-center mt-4">
+            <div class="col-md-4">
+                <div class="image-container">
+                    <img src="https://img.freepik.com/free-vector/open-house-abstract-concept-vector-illustration-open-inspection-property-home-sale-real-estate-service-potential-buyer-walk-through-house-staging-floor-plan-abstract-metaphor_335657-5732.jpg?semt=ais_hybrid&w=740&q=80" alt="Property 1">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="image-container">
+                    <img src="https://www.shutterstock.com/image-photo/dubai-marina-symbol-jumeirah-beach-600nw-1909118782.jpg" alt="Property 2">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="image-container">
+                    <img src="https://www.shutterstock.com/image-photo/silhouette-black-asian-people-shaking-600nw-1974187757.jpg" alt="Property 3">
+                </div>
+            </div>
+        </div>
+        
+        
+        <!-- Golden Line -->
+        <div class="golden-line"></div>
+
+        <!-- Collaborated Agency -->
+        <div class="collaboratedagency mt-5">
+            <div class="trusted-agency">
+                <h2>The Most Trusted <span>Real Estate</span> Agency in Dubai</h2>
+            </div>
+
+            <!-- Scrolling Logos -->
+            <div class="agency-logos-wrapper">
+                <div class="agency-logos">
+                   <img src="https://images.seeklogo.com/logo-png/33/1/damac-properties-logo-png_seeklogo-339541.png" alt="Agency Logo 1">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRALnXWETuE3v5Ew8AEjbsDsUD5-cZOQOypig&s" alt="Agency Logo 2">
+            <img src="https://danubeholding.com/wp-content/uploads/2025/03/cropped-Header-Logo.webp" alt="Agency Logo 3">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Logo_Binghatti.jpg" alt="Agency Logo 4">
+            <img src="https://sobha-hartland-properties.com/uploads/images/2022-08/77d9fc991425eedd35335d4cf8b1f25d.jpg" alt="Agency Logo 5">
+           <img src="https://www.noumouproperties.com/wp-content/uploads/2023/07/Azizi-developments.png" alt="Agency Logo 6">
+           <img src="https://luxurylifestyleawards.com/wp-content/uploads/2021/03/ELLINGTON-LOGO.jpg" alt="Agency Logo 7">
+            <img src="https://fnst.axflare.com/developer/logo/JPEG/qVkJtededY.jpg" alt="Agency Logo 8">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKFU_dpKu2DT9rjiTy5i3fL1L1-ryERtNT7w&s" alt="Agency Logo 9">
+            <img src="https://cdn.prod.website-files.com/64cd0df1806781d956403b26/6528eba6bddf8430fb4dd1ff_masterpieces-share-image.webp" alt="Agency Logo 10">
+
+
+               <img src="https://images.seeklogo.com/logo-png/33/1/damac-properties-logo-png_seeklogo-339541.png" alt="Agency Logo 1">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRALnXWETuE3v5Ew8AEjbsDsUD5-cZOQOypig&s" alt="Agency Logo 2">
+            <img src="https://danubeholding.com/wp-content/uploads/2025/03/cropped-Header-Logo.webp" alt="Agency Logo 3">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Logo_Binghatti.jpg" alt="Agency Logo 4">
+            <img src="https://sobha-hartland-properties.com/uploads/images/2022-08/77d9fc991425eedd35335d4cf8b1f25d.jpg" alt="Agency Logo 5">
+           <img src="https://www.noumouproperties.com/wp-content/uploads/2023/07/Azizi-developments.png" alt="Agency Logo 6">
+           <img src="https://luxurylifestyleawards.com/wp-content/uploads/2021/03/ELLINGTON-LOGO.jpg" alt="Agency Logo 7">
+            <img src="https://fnst.axflare.com/developer/logo/JPEG/qVkJtededY.jpg" alt="Agency Logo 8">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKFU_dpKu2DT9rjiTy5i3fL1L1-ryERtNT7w&s" alt="Agency Logo 9">
+            <img src="https://cdn.prod.website-files.com/64cd0df1806781d956403b26/6528eba6bddf8430fb4dd1ff_masterpieces-share-image.webp" alt="Agency Logo 10">
+</div>
+            </div>
+        </div>
+
+    </div>
+</section>
+       
+
+<div class="golden-line"></div>
+
+<!-- Key Services Section -->
+<section class="key-services container py-5">
+    <div class="row align-items-center">
+        <!-- Left Side: Services List -->
+        <div class="col-lg-6">
+            <h3 class="mb-4">Variation In Properties</h3>
+            <div class="service d-flex align-items-center mb-3">
+                <img src="/img/back.jpg" alt="Residential" class="me-3">
+                <div>
+                    <h3 class="h4">Residential Properties</h3>
+                    <p>We help you find your perfect home, whether it’s a luxurious villa, apartment, or townhouse.</p>
+                </div>
+            </div>
+            <div class="service d-flex align-items-center mb-3">
+                <img src="/img/back.jpg" alt="Commercial" class="me-3">
+                <div>
+                    <h3 class="h4">Commercial Properties</h3>
+                    <p>Empower your business with strategically located offices, retail spaces, and industrial properties.</p>
+                </div>
+            </div>
+            <div class="service d-flex align-items-center">
+                <img src="/img/back.jpg" alt="Off-Plan" class="me-3">
+                <div>
+                    <h3 class="h4">Off-Plan Properties</h3>
+                    <p>Explore future-ready investments with exclusive off-plan projects from top developers in the UAE.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Key Services 2 Section -->
+<section class="key-services2  container my-5 py-5 text-center text-md-start">
+    <div class="row mb-4">
+        <div class="col-12 text-md-start">
+            <h3>KEY SERVICES</h3>
+            <h2>PROVIDING END-TO-END EXCELLENCE</h2>
+            <p>We manage every aspect of your property journey, from acquisition to long-term care.</p>
+            <p>At Raqba Realty, we take pride in being your 360° real estate partner offering complete property management services and comprehensive solutions to ensure your investment is secure, profitable, and stress-free.</p>
+        </div>
+    </div>
+
+    <div class="golden-line"></div>
+
+    <div class="row g-4">
+    <div class="col-md-4">
+        <div class="card text-white border-0 text-center p-4">
+            <i class="fas fa-building service-icon"></i>
+            <div class="card-body">
+                <h5 class="card-title text-center">TAILORED RENTAL SOLUTIONS</h5>
+                <ul class="list-unstyled">
+                    <li>✔ Rental strategies for maximum returns.</li>
+                    <li>✔ Tenant sourcing and placements.</li>
+                    <li>✔ Tenant screening and management.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card text-white border-0 text-center p-4">
+            <i class="fas fa-passport service-icon"></i>
+            <div class="card-body">
+                <h5 class="card-title text-center">VISA ASSISTANCE</h5>
+                <ul class="list-unstyled">
+                    <li>✔ Guidance through the UAE’s Golden Visa application process.</li>
+                    <li>✔ Connect with trusted visa agents.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card text-white border-0 text-center p-4">
+            <i class="fas fa-user-shield service-icon"></i>
+            <div class="card-body">
+                <h5 class="card-title text-center">SPONSORSHIP APPLICATION SUPPORT</h5>
+                <ul class="list-unstyled">
+                    <li>✔ Step-by-step assistance for family residency applications.</li>
+                    <li>✔ Simplified procedures with expert advice.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+</section>
+
+<div class="golden-line"></div>
+
+<!-- Key Services 3 Section -->
+<section class="key-services-3 py-5">
+<div class="container">
+    <div class="text-start mb-4">
+        <h3 class="key-services-3-title">KEY SERVICES</h3>
+        <h3 class="key-services-3-subtitle">PROVIDING</h3>
+        <h3 class="key-services-3-description1">SERVICES BEYOND JUST REAL ESTATE</h3>
+        <p >We manage more than just properties – we help ensure your lifestyle and peace of mind.</p>
+    </div>
+
+    <!-- Golden Line -->
+    <div class="key-services-3-golden-line"></div>
+
+    <!-- Images with Titles and Points -->
+    <div class="row justify-content-center">
+    <div class="col-md-5 text-center mb-4">
+        <i class="fas fa-tools key-services-3-icon"></i>
+        <h4 class="key-services-3-image-title">MAINTENANCE & MANAGEMENT</h4>
+        <div class="key-services-3-points">
+            <p>✔ Access to trusted, vetted maintenance agencies for all property needs.</p>
+        </div>
+    </div>
+
+    <div class="col-md-5 text-center mb-4">
+        <i class="fas fa-lightbulb key-services-3-icon"></i>
+        <h4 class="key-services-3-image-title">UTILITIES MANAGEMENT</h4>
+        <div class="key-services-3-points">
+            <p>✔ Proactive utility management assistance to ensure smooth operations.</p>
+        </div>
+    </div>
+</div>
+
+    </div>
+</section>
+
+<div class="golden-line"></div>
+
+<section class="conclusion-section text-center">
+    <div class="container">
+        <h3 class="conclusion-title">TO <br>CONCLUDE</h3>
+        <p class="conclusion-description">
+            The real estate business in Dubai is set for expansive growth in 2025 and 2026. 
+            With rising property prices, rental returns, and increasing foreign investment, 
+            it is an attractive time for both short-term profits and long-term investments. 
+            Whether you're considering luxury villas or modern apartments, now is the right 
+            moment to make a move. With Raqba, you gain expert guidance, tailored solutions, 
+            and access to premium properties in Dubai’s dynamic market.
+        </p>
+    </div>
+</section>
+
+
+
+
+
+
+<footer>
+    <div class="footer-container">
+        <!-- Left Section: Logo -->
+        <div class="footer-left">
+            <img src="/img/logo.png" alt="logo-of-footer" class="footer-logo">
+            <p class="footer-tagline">WHERE DREAMS MEET REALITY</p>
+        </div>
+
+        <!-- Middle Section: Navigation Links -->
+        <div class="footer-middle">
+            <div class="footer-column">
+                <a href="#">Apartments</a>
+                <a href="#">Penthouses</a>
+                <a href="#">Villas</a>
+                <a href="#">Townhouses</a>
+                <a href="#">Off-Plan</a>
+            </div>
+            <div class="footer-column">
+                <a href="#">Catalogs</a>
+                <a href="#">Area Guides</a>
+                <a href="#">Sell</a>
+                <a href="#">Rent</a>
+                <a href="#">Developers</a>
+            </div>
+            <div class="footer-column">
+                <a href="#">Raqba Realty</a>
+                <a href="#">Reviews</a>
+                <a href="#">Careers</a>
+                <a href="#">Contact Us</a>
+            </div>
+        </div>
+
+        <!-- Right Section: Contact Info & Social Icons -->
+        <div class="footer-right">
+            <p class="footer-location"><strong>Dubai, UAE</strong></p>
+            <p class="footer-address">Al Bahar Building, Al Khabesi Area, Deira</p>
+            
+            <div class="footer-social">
+                <a href="#"><i class="fas fa-envelope"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-x-twitter"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+
+            <a href="tel:+9800000000" class="call-us-button mt-3">Call Us</a>
+        </div>
+    </div>
+
+    <!-- Bottom Footer Section -->
+    <div class="footer-bottom">
+        <p>RAQBA REALTY ©2025, All Rights Reserved</p>
+        <div class="footer-links">
+            <a href="#">Terms of Use</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Sitemap</a>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init();
+</script>
+
+
+</body>
+</html>
+
+

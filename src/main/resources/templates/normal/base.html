@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+ 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     
+    <link rel="stylesheet" th:href="@{../../CSS/style.css}"/>
+
+    <title th:text="${title}">Admin Panel</title>
+  </head>
+  <body>
+  
+  
+  <nav class="fixed-top navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">Admin Panel</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto text-uppercase">
+      <li class="nav-item active">
+        <a class="nav-link" th:href="@{/admin/dashboard}" href="#">Dashboard <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"><span th:text="${user.name}"></span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/logout}" href="#">LogOut</a>
+      </li>
+    </ul>
+  </div>
+ </nav>
+  
+  <!-- this is side bar -->
+  <div class="sidebar mt-3">
+  
+    <span  onclick="toggleSidebar()" class="crossBtn">&times;</span>
+    
+    <a href="#" th:href="@{/admin/dashboard}" class="item"><i class="fa-solid fa-house"></i>Dashboard</a>
+    <a href="#" th:href="@{/admin/manage-users}" class="item"><i class="fa-solid fa-users"></i>Manage Users</a>
+    <a href="#" th:href="@{/admin/manage-properties}" class="item"><i class="fa-solid fa-building"></i>Manage Properties</a>
+    <a href="#" th:href="@{/admin/reports}" class="item"><i class="fa-solid fa-chart-line"></i>Reports</a>
+    <a href="#" th:href="@{/admin/settings}" class="item"><i class="fa-solid fa-gear"></i>Settings</a>
+    <a href="#" th:href="@{/logout}" class="item"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
+    
+    <div class="divder"></div>
+    
+  </div>
+    <!-- End side bar -->
+    
+    <!-- content area -->
+  <div class="content mt-5">
+    
+  <!-- HTML for the bars icon -->
+<i  class="fas fa-bars m-3" 
+onclick="toggleSidebar()"></i>
+
+   <div th:if="${session.message}" class="container">
+   <div th:classappend="${'alert ' + session.message.type}" class="alert alert-success text-center" role="alert">
+     <span th:text="${session.message.text}">This is a success alert—check it out!</span>
+    </div>
+    
+   <th:block th:remove="${@sessionHelper.removeMessageFromSession()}"></th:block>
+
+    </div>
+    
+    <div th:replace="${content}"></div>
+  
+  
+  </div>
+    <!-- end content area -->
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" 
+     integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9c/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" 
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+   
+     <script th:src="@{../../js/script.js}"></script>
+     
+     <script>
+     
+     function deleteRecord(id, type) {
+         const swalWithBootstrapButtons = Swal.mixin({
+             customClass: {
+                 confirmButton: "btn btn-success",
+                 cancelButton: "btn btn-danger"
+             },
+             buttonsStyling: false
+         });
+         swalWithBootstrapButtons.fire({
+             title: "Are you sure?",
+             text: "You won't be able to revert this!",
+             icon: "warning",
+             showCancelButton: true,
+             confirmButtonText: "Yes, delete it!",
+             cancelButtonText: "No, cancel!",
+             reverseButtons: true
+         }).then((result) => {
+             if (result.isConfirmed) {
+                 window.location = `/admin/delete/${type}/${id}`;
+                 swalWithBootstrapButtons.fire({
+                     title: "Deleted!",
+                     text: "The record has been deleted.",
+                     icon: "success"
+                 });
+             } else if (
+                 result.dismiss === Swal.DismissReason.cancel
+             ) {
+                 swalWithBootstrapButtons.fire({
+                     title: "Cancelled",
+                     text: "The record is safe.",
+                     icon: "error"
+                 });
+             }
+         });
+     }
+     
+     </script>
+  </body>
+</html>

@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rent Properties</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+    
+     body {
+            font-family: 'Raleway', sans-serif;
+            background-color: #531F55;
+            color: white;
+        }
+        
+     .navbar {
+            background-color: #531F55 !important;
+            border-bottom: 2px solid gold;
+            padding: 10px 0;
+        }
+
+        .logo-img {
+            width: 250px;
+            height: auto;
+        }
+
+        .navbar-nav .nav-link {
+            color: white !important;
+            font-weight: 600;
+            padding: 8px 15px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: #ffc107 !important;
+            font-weight: bold;
+            border-bottom: 2px solid #ffc107;
+        }
+
+        .follow-us {
+            color: white;
+            font-weight: bold;
+            margin-left: 20px;
+        }
+        
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 80px 100px;
+            background: linear-gradient(to bottom, #4e1d64 85%, rgba(0, 0, 0, 0) 100%);
+            color: white;
+            min-height: 75vh;
+        }
+
+        .hero-text {
+            width: 60%;
+        }
+
+        .hero-text h6 {
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            margin-bottom: 10px;
+        }
+
+        .firstp {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        .secondp {
+           font-size: 3rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .hero-image {
+            width: 50%;
+            display: flex;
+            justify-content: flex-end;
+            position: relative;	
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 600px;
+            
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+            /* Fading effect using mask */
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 70%, rgba(0, 0, 0, 0) 100%);
+            mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 70%, rgba(0, 0, 0, 0) 100%);
+        }
+        
+
+        @media (max-width: 992px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 60px 30px;
+            }
+
+            .hero-text {
+                width: 100%;
+                margin-bottom: 30px;
+            }
+
+            .secondp {
+                font-size: 2rem;
+            }
+
+            .hero-image {
+                width: 80%;
+                justify-content: center;
+            }
+        }
+        
+     .filter-section {
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 900px;
+            margin: 20px auto;
+        }
+
+        label {
+            font-size: 18px;
+            font-weight: bold;
+            color: #DAA520;
+        }
+
+        select, input {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #DAA520;
+            background-color: #222;
+            color: white;
+            font-size: 16px;
+            outline: none;
+            width: 100%;
+        }
+
+        button {
+            background-color: #DAA520;
+            border: none;
+            padding: 12px 20px;
+            font-size: 18px;
+            color: #1c1c1c;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        button:hover {
+            background-color: gold;
+            color: white;
+        }
+        
+.card {
+    height: 500px; /* Fixed height for all cards */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: rgba(0, 0, 0, 0.3);
+    color:white;
+}
+
+
+
+.card .carousel {
+    height: 300px; /* Fixed height for the image section */
+    overflow: hidden; /* Prevents overflow */
+}
+
+.card .carousel-inner {
+    height: 100%;
+}
+
+.card .carousel-item img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover; /* Ensures images fit inside without stretching */
+}
+
+.card-body {
+    flex-grow: 1; /* Ensures content area takes remaining space */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Initially hide the carousel controls */
+.carousel-control-prev,
+.carousel-control-next {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Show controls when hovering over the carousel */
+.carousel:hover .carousel-control-prev,
+.carousel:hover .carousel-control-next {
+    opacity: 1;
+}
+
+/* Remove golden background effect */
+.carousel-control-prev,
+.carousel-control-next {
+    background-color: transparent !important;
+    border: none;
+}
+
+/* Darken the image when hovering over the carousel */
+.carousel-item img {
+    transition: filter 0.3s ease-in-out;
+}
+
+.carousel:hover .carousel-item img {
+    filter: brightness(70%);
+}
+
+       .details {
+            background-color: #FFD700;
+            color:black;
+            transition: 0.3s ease;
+        }
+
+        .details:hover {
+            background-color: #DAA520;
+            color: white;
+        }
+        
+.pagination .page-item .page-link {
+    background-color: #f8f9fa;
+    border: 1px solid #ccc;
+    color: #333;
+    padding: 8px 12px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.pagination .page-item .page-link:hover {
+    background-color: #d4af37;
+    color: #fff;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #d4af37;
+    color: #fff;
+    border-color: #d4af37;
+}
+
+.pagination .page-item.disabled .page-link {
+    background-color: #e0e0e0;
+    color: #888;
+    cursor: not-allowed;
+}
+
+           /* Footer Container */
+footer {
+    background-color: rgba(0, 0, 0, 0.3); /* Dark purple background */
+    color: white;
+    padding: 40px 60px;
+    font-family: Arial, sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+/* Left Section: Logo & Tagline */
+.footer-left {
+    max-width: 250px;
+}
+
+.footer-logo {
+    width: 180px; /* Adjust logo size */
+}
+
+.footer-tagline {
+    font-size: 0.9rem;
+    margin-top: 5px;
+    opacity: 0.8;
+}
+
+/* Middle Section: Navigation Links */
+.footer-middle {
+    display: flex;
+    gap: 40px;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.footer-column a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer-column a:hover {
+    color: gold;
+}
+
+/* Right Section: Location & Social Icons */
+.footer-right {
+    text-align: right;
+}
+
+.footer-location {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.footer-address {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-bottom: 10px;
+}
+
+/* Social Icons */
+.footer-social {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+    justify-content: flex-end;
+}
+
+.footer-social a {
+    color: white;
+    font-size: 1.5rem;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer-social a:hover {
+    color: gold;
+}
+
+/* Call Us Button */
+.call-us-button {
+            border: 2px solid gold;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 1rem;
+            background: transparent;
+            color: white;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+.call-us-button:hover {
+    background-color: gold;
+    color: black;
+}
+
+/* Bottom Footer Section */
+.footer-bottom {
+    border-top: 2px solid gold;
+    margin-top: 30px;
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer-links a:hover {
+    color: gold;
+}       
+        
+    </style>
+    
+    <script>
+    function updateFilters() {
+        let field = document.getElementById("field-select").value;
+        document.querySelectorAll(".filter-group").forEach(el => el.style.display = "none");
+        if (field) {
+            document.getElementById(field.toLowerCase() + "-filters").style.display = "block";
+        }
+    }
+
+    function cleanForm() {
+        let field = document.getElementById("field-select").value;
+        document.querySelectorAll(".filter-group select, .filter-group input").forEach(el => el.disabled = true);
+        if (field) {
+            document.querySelectorAll(`#${field.toLowerCase()}-filters select, #${field.toLowerCase()}-filters input`).forEach(el => el.disabled = false);
+        }
+        return true;
+    }
+
+    document.addEventListener("DOMContentLoaded", updateFilters);
+    </script>
+   
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+            <img src="/img/logo.png" alt="Logo" class="logo-img">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+                <li>
+                      <a class="nav-link" href="/" th:classappend="${page == 'home'} ? 'active' : ''">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about" th:classappend="${page == 'about'} ? 'active' : ''">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/contact}" th:classappend="${page == 'contact'} ? 'active' : ''">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/sell" th:classappend="${page == 'sell'} ? 'active' : ''">Sell</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/buy" th:classappend="${page == 'buy'} ? 'active' : ''">Buy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/rent" th:classappend="${page == 'rent'} ? 'active' : ''">Rent</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="/offplan" th:classappend="${page == 'offplan'} ? 'active' : ''">OffPlan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/submitReview}" th:classappend="${page == 'submitReview'} ? 'active' : ''">Review</a>
+                    </li>
+                
+            </ul>
+            <span class="follow-us">Follow Us</span>
+        </div>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="hero-text">
+        <h6>RAQBA REALTY</h6>
+        <p class="firstp">WE’RE MORE THAN JUST A REAL ESTATE FIRM.</p>
+        <h3 class="secondp">YOUR DREAM <br> PROPERTY<br>AVAILABLE FOR SALE</h3>
+    </div>
+    <div class="hero-image">
+        <img src="https://tlz.ae/wp-content/uploads/2022/05/TZ-holiday-home.png" alt="Luxury Home">
+    </div>
+</section>
+
+
+<div class="container">
+    <form method="get" action="/rent" class="filter-section row g-3" onsubmit="return cleanForm()">
+        <div class="col-md-12">
+            <label for="field-select" class="form-label">Field:</label>
+            <select class="form-select" name="field" id="field-select" onchange="updateFilters()">
+                <option value="">Any</option>
+                <option value="Residential" th:selected="${param.field == 'Residential'}">Residential</option>
+                <option value="Commercial" th:selected="${param.field == 'Commercial'}">Commercial</option>
+                <option value="Land" th:selected="${param.field == 'Land'}">Land</option>
+            </select>
+        </div>
+
+        <div id="residential-filters" class="filter-group col-md-12" style="display: none;">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label>Location:</label>
+                    <select class="form-select" name="location">
+                        <option value="">Any</option>
+                        <th:block th:each="location : ${availableLocations}">
+                            <option th:text="${location}" th:value="${location}" th:selected="${location == param.location}"></option>
+                        </th:block>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label>Bedroom:</label>
+                    <select class="form-select" name="bedroom">
+                        <option value="">Any</option>
+                        <th:block th:each="bedroom : ${availableBedrooms}">
+                            <option th:text="${bedroom}" th:value="${bedroom}" th:selected="${bedroom == param.bedroom}"></option>
+                        </th:block>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label>Faculty:</label>
+                    <select class="form-select" name="faculty">
+                        <option value="">Any</option>
+                        <th:block th:each="faculty : ${availableFaculties}">
+                            <option th:text="${faculty}" th:value="${faculty}" th:selected="${faculty == param.faculty}"></option>
+                        </th:block>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label>Max Area:</label>
+                    <input type="number" class="form-control" name="MaxArea" th:value="${param.maxArea}" placeholder="Enter Max Area">
+                </div>
+            </div>
+        </div>
+
+        <div id="commercial-filters" class="filter-group col-md-12" style="display: none;">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label>Location:</label>
+                    <select class="form-select" name="location">
+                        <option value="">Any</option>
+                        <th:block th:each="location : ${availableLocations}">
+                            <option th:text="${location}" th:value="${location}" th:selected="${location == param.location}"></option>
+                        </th:block>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label>Faculty:</label>
+                    <select class="form-select" name="faculty">
+                        <option value="">Any</option>
+                        <th:block th:each="faculty : ${availableFaculties}">
+                            <option th:text="${faculty}" th:value="${faculty}" th:selected="${faculty == param.faculty}"></option>
+                        </th:block>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div id="land-filters" class="filter-group col-md-12" style="display: none;">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label>Location:</label>
+                    <select class="form-select" name="location">
+                        <option value="">Any</option>
+                        <th:block th:each="location : ${availableLocations}">
+                            <option th:text="${location}" th:value="${location}" th:selected="${location == param.location}"></option>
+                        </th:block>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 text-center">
+            <button type="submit" class="btn btn-warning">Apply Filters</button>
+        </div>
+    </form>
+    </div>
+
+<div class="container py-5">
+    <h3 class="text-center">Available Properties</h3>
+    <div class="row g-4">
+        <th:block th:each="group : ${filteredProperties}">
+            <div class="col-lg-4 col-md-6">
+                <div class="card">
+                    <div th:id="'carousel-' + ${group.imageId}" class="carousel slide" data-bs-ride="false">
+                        <div class="carousel-inner">
+                            <th:block th:each="image, iterStat : ${group.images}">
+                                <div class="carousel-item" th:classappend="${iterStat.first} ? 'active' : ''">
+                                    <img th:src="@{'/images/' + ${image.id}}" class="d-block w-100" alt="Property Image">
+                                </div>
+                            </th:block>
+                        </div>
+                        <button class="carousel-control-prev" type="button" th:data-bs-target="'#carousel-' + ${group.imageId}" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" th:data-bs-target="'#carousel-' + ${group.imageId}" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title text-center" th:text="${group.name}"></h5>
+                        <p class="card-text text-center">Type: <span th:text="${group.type}"></span></p>
+                        <p class="card-text text-center">Bedroom: <span th:text="${group.bedroom}"></span></p>
+                        <p class="card-text text-center">Currency: <span th:text="${group.currency}"></span></p>
+                        <a th:href="@{details/{id}(id=${group.imageId})}" class="details btn ">Show Details</a>
+                    </div>
+                </div>
+            </div>
+        </th:block>
+    </div>
+
+    <nav aria-label="Page navigation" class="mt-4">
+    <ul class="pagination justify-content-center">
+        <!-- Previous Button -->
+        <li class="page-item" th:if="${currentPage > 0}">
+            <a class="page-link" th:href="@{/rent(page=${currentPage - 1})}">Previous</a>
+        </li>
+
+        <!-- First Page Always Visible -->
+        <li class="page-item" th:if="${totalPages > 1}" th:classappend="${0 == currentPage} ? 'active'">
+            <a class="page-link" th:href="@{/rent(page=0)}">1</a>
+        </li>
+
+        <!-- Ellipsis if currentPage is greater than 2 -->
+        <li class="page-item disabled" th:if="${currentPage > 2}">
+            <span class="page-link">...</span>
+        </li>
+
+        <!-- Display Middle Pages (Current Page +/- 1) -->
+        <th:block th:each="i : ${#numbers.sequence(currentPage - 1, currentPage + 1)}" 
+                  th:if="${i > 0 && i < totalPages - 1}">
+            <li class="page-item" th:classappend="${i == currentPage} ? 'active'">
+                <a class="page-link" th:href="@{/rent(page=${i})}" th:text="${i + 1}"></a>
+            </li>
+        </th:block>
+
+        <!-- Ellipsis if there are more than 4 pages -->
+        <li class="page-item disabled" th:if="${currentPage < totalPages - 3}">
+            <span class="page-link">...</span>
+        </li>
+
+        <!-- Last Page Always Visible -->
+        <li class="page-item" th:if="${totalPages > 1}" th:classappend="${(totalPages - 1) == currentPage} ? 'active'">
+            <a class="page-link" th:href="@{/rent(page=${totalPages - 1})}" th:text="${totalPages}"></a>
+        </li>
+
+        <!-- Next Button -->
+        <li class="page-item" th:if="${currentPage + 1 < totalPages}">
+            <a class="page-link" th:href="@{/rent(page=${currentPage + 1})}">Next</a>
+        </li>
+    </ul>
+</nav>
+</div>
+
+<footer>
+    <div class="footer-container">
+        <!-- Left Section: Logo -->
+        <div class="footer-left">
+            <img src="/img/logo.png" alt="logo-of-footer" class="footer-logo">
+            <p class="footer-tagline">WHERE DREAMS MEET REALITY</p>
+        </div>
+
+        <!-- Middle Section: Navigation Links -->
+        <div class="footer-middle">
+            <div class="footer-column">
+                <a href="#">Apartments</a>
+                <a href="#">Penthouses</a>
+                <a href="#">Villas</a>
+                <a href="#">Townhouses</a>
+                <a href="#">Off-Plan</a>
+            </div>
+            <div class="footer-column">
+                <a href="#">Catalogs</a>
+                <a href="#">Area Guides</a>
+                <a href="#">Sell</a>
+                <a href="#">Rent</a>
+                <a href="#">Developers</a>
+            </div>
+            <div class="footer-column">
+                <a href="#">Raqba Realty</a>
+                <a href="#">Reviews</a>
+                <a href="#">Careers</a>
+                <a href="#">Contact Us</a>
+            </div>
+        </div>
+
+        <!-- Right Section: Contact Info & Social Icons -->
+        <div class="footer-right">
+            <p class="footer-location"><strong>Dubai, UAE</strong></p>
+            <p class="footer-address">Al Bahar Building, Al Khabesi Area, Deira</p>
+            
+            <div class="footer-social">
+                <a href="#"><i class="fas fa-envelope"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-x-twitter"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+
+            <a href="tel:+9800000000" class="call-us-button mt-3">Call Us</a>
+        </div>
+    </div>
+
+    <!-- Bottom Footer Section -->
+    <div class="footer-bottom">
+        <p>RAQBA REALTY ©2025, All Rights Reserved</p>
+        <div class="footer-links">
+            <a href="#">Terms of Use</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Sitemap</a>
+        </div>
+    </div>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

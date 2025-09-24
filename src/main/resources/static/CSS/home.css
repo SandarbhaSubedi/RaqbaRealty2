@@ -1,0 +1,1162 @@
+/* Navbar styling*/
+        .navbar {
+            background-color: black ; /* Grey background */
+            position: sticky; /* Make the navbar sticky at the top */
+            top: 0; /* Stick it to the top of the page */
+            z-index: 1000; /* Ensure the navbar stays on top of other content */
+            height: 120px; /* Adjust navbar height for larger logo */
+        }
+
+        .navbar .nav-link {
+            color: #ffffff; /* White text */
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .navbar .nav-link:hover {
+            color: #ffc107; /* Yellow hover effect */
+        }
+
+        .navbar .nav-link.active {
+            color: #ffc107; /* Yellow active link */
+            font-weight: bold;
+            border-bottom: 2px solid #ffc107; /* Yellow underline for active */
+        }
+
+        .logo-img {
+            height: 100px; /* Logo size increased by 5 times */
+            width: 400px;   /* Maintain aspect ratio */
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center; /* Align logo vertically with links */
+        }
+
+        .navbar {
+            padding: 10px 20px; /* Adjust padding for better spacing */
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .logo-img {
+                height: 150px; /* Scale down logo for small screens */
+            }
+
+            .navbar {
+                padding: 5px 10px; /* Reduce padding for small screens */
+            }
+
+            .navbar-nav {
+                text-align: center; /* Center-align menu items on mobile */
+            }
+
+            .navbar-nav .nav-link {
+                padding: 10px; /* Add padding for better touch targets */
+            }
+            
+        }
+        
+
+.Homebody{
+          /* If you want to use a solid color as fallback */
+    /* background-color: #4B0082; */
+
+    background-image: url("/img/backgroundimage.png.jpg"); /*Corrected syntax */
+    background-size: cover; /* Ensures the image covers the entire viewport */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents tiling */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh; /* Ensures the background covers the full height */
+          
+          }
+
+
+        /* Video Section */
+        .Homevideo-container {
+            position: relative;
+            width: 100%;
+            height: 70vh;
+            overflow: hidden;
+        }
+
+        .Homevideo-container video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        
+
+ .Homewelcome-container {
+    text-align: center ;
+    padding: 40px; /* Added padding */
+    background-color: rgba(0, 0, 0, 0.35); /* Black with 60% opacity */
+    color: white; /* White text for contrast */
+    width: 95%; /* Covers 95% of the page width */
+    margin: auto; /* Centering the section */
+    border-radius: 10px; /* Optional: Makes edges rounded */
+}
+
+
+
+.Homewelcome-title {
+    font-size: 42px; /* Bigger title */
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #b8860b; /* Dark Golden color */
+}
+
+.Homewelcome-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px; /* More space between images and text */
+    max-width: 1300px;
+    margin: auto;
+}
+
+.Homewelcome-image {
+    width: 40%; /* Increased image size */
+    max-width: 450px; /* Bigger images */
+    
+}
+
+.Homewelcome-text {
+    font-size: 20px; /* Slightly larger text */
+    line-height: 1.6; /* Improve spacing between lines */
+    margin: 20px 0; /* Add vertical spacing */
+    padding: 10px 20px; /* Add padding for better readability */
+    text-align: center; /* Ensure text is centered */
+    width: 80%; /* Adjust width for better layout */
+    max-width: 800px; /* Limit max width for readability */
+}
+
+
+/* Golden Line */
+.Homegolden-line {
+    width: 90%; /* Increased width */
+    height: 5px; /* Slightly thicker */
+    background-color: #b8860b; /* Golden color */
+    margin: 50px auto;
+}
+
+/* Image and Boxed Description Section */
+.Homeimage-description{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px 0;
+}
+
+.Homeimage-description img {
+    width: 40%;
+    max-width: 450px; /* Bigger image */
+    border-radius: 5%;
+}
+
+.Homeimage-description-box {
+    width: 50%;
+    padding: 20px;
+    background-color: rgba(255, 215, 0, 0.1); /* Light golden transparent box */
+    border: 2px solid #b8860b; /* Golden border */
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(255, 215, 0, 0.3);
+    text-align: left;
+    font-size: 20px;
+    line-height: 1.6;
+}
+
+.Homeimage-description-box h3{
+ color: #b8860b;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .Homewelcome-content,
+    .Homeimage-description {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .Homewelcome-image,
+    .Homeimage-description img {
+        width: 100%; /* Make images bigger on smaller screens */
+        max-width: 500px; /* Adjusted max width */
+    }
+
+    .Homewelcome-text,
+    .Homeimage-description-box {
+        width: 90%;
+        font-size: 20px;
+    }
+}
+
+
+/* Homeexclusive-container Styling */
+.Homeexclusive-container {
+    width: 95%;
+    padding: 60px 40px;
+     background-color: rgba(0, 0, 0, 0.35); /* Black with 60% opacity */
+    color: white;
+    margin-top: 50px;
+}
+
+/* Exclusive Properties Title */
+.exclusive-title {
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    color: #b8860b; /* Dark Golden */
+    margin-bottom: 20px;
+}
+
+.exclusivecontent-heading{
+color:#b8860b;
+margin-left:170px;
+margin-top:85px;
+}
+
+/* Flex Layout for Exclusive Properties */
+.exclusive-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 1px; /* Reduced gap between left and right */
+}
+
+/* Left Side: Exclusive Card */
+.exclusive-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Exclusive Properties Card */
+.exclusive-card {
+    width: 100%;
+    max-width: 550px;
+    background-color: rgba(0, 0, 0, 0.2); /* Black with 60% opacity */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(255, 215, 0, 0.2);
+    margin-left:50px;
+}
+
+/* Image Slider Inside Card */
+.exclusive-image {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.carousel-inner img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* Golden Carousel Buttons */
+.custom-carousel-btn {
+    background: rgba(218, 165, 32, 0.2);
+    border-radius: 90%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: brightness(0) invert(1);
+}
+
+/* Card Details */
+.exclusive-details {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.exclusive-details h3 {
+    color: #b8860b;
+    font-size: 22px;
+}
+
+.exclusive-details p {
+    font-size: 16px;
+}
+
+/* Right Side: Heading, Text, and Image + Description */
+.exclusive-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start; /* Align to left */
+    margin-left: 10px; /* Reduced margin */
+}
+
+.exclusive-header {
+    text-align: left;
+    margin-bottom: 22px;
+}
+
+.exclusive-heading {
+    color: #DAA520; /* Dark Golden */
+    font-size: 24px;
+}
+
+.exclusive-text {
+    font-size: 20px;
+    line-height: 1.6;
+}
+
+/* Image + Description Below */
+.exclusive-image-description {
+    text-align: left;
+}
+
+.exclusive-top-image {
+    width: 100%;
+    max-width: 500px; /* Increased image size */
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.exclusive-top-description {
+    font-size: 20px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+button.exclusive-btn-primary,
+a.exclusive-btn-primary {
+    background-color: #DAA520; /* Dark Golden */
+    border-color: #DAA520 ;
+    color: white !important; /* White text for the button */
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    display: inline-block; /* Ensures proper button display */
+    cursor: pointer; /* Makes it clear it's clickable */
+}
+
+
+.button.exclusive-btn-primary,
+a.exclusive-btn-primary:hover{
+ background-color: #c88e14; /* Slightly darker golden shade on hover */
+    border-color: #c88e14;
+}
+
+/* Golden Line and Additional Description */
+.exclusive-bottom {
+    margin-top: 40px;
+    
+}
+
+.exclusive-golden-line {
+    border: 2px solid #DAA520; /* Golden Line */
+    width: 100%;
+    margin: 20px 0;
+}
+
+.exclusive-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Image on Left */
+.exclusive-feature-image {
+    width: 300px;
+    border-radius: 10px;
+}
+
+/* Description Box */
+.exclusive-description {
+    padding: 20px;
+    background-color: rgba(255, 215, 0, 0.1);
+    border: 2px solid #DAA520;
+    border-radius: 10px;
+    flex: 1;
+    font-size: 20px;
+}
+
+
+/* Filter selection Types Section */
+.FilterSelect-container {
+    width: 95%;
+    padding: 60px 40px;
+     background-color: rgba(0, 0, 0, 0.35); /* Black with 60% opacity */
+    color: white;
+    margin-top: 50px;
+}
+
+/* Title and Description */
+.FilterSelect-text-content {
+    text-align: center;
+    margin-bottom: 40px;
+   
+}
+
+.FilterSelect-text-content h2 {
+    font-size: 40px;
+    font-weight: bold;
+    color: #DAA520; /* Dark Golden */
+}
+
+.FilterSelect-text-content p {
+     font-size: 35px;
+    font-weight: bold;
+    color: #DAA520; /* Dark Golden */
+    
+}
+
+/* Flex Layout for Description and Card */
+.FilterSelect-property-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 55px; /* Space between rows */
+}
+
+/* Description Styling */
+.FilterSelect-property-description {
+    flex: 1;
+    font-size: 20px;
+    line-height: 1.6;
+    color: #fff;
+}
+
+
+.FilterSelect-property-description h3{
+ color: #DAA520;
+
+}
+
+/* Property Cards */
+.FilterSelect-homepropertlycard {
+    flex: 1;
+    background-color: rgba(0, 0, 0, 0.2); /* Black with 60% opacity */
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3); /* Deeper shadow */
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+/* Hover Effects for Cards*/
+.FilterSelect-homepropertlycard:hover {
+    transform: translateY(-5px); /* Card lifts up slightly */
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5); /* Stronger shadow on hover */
+}
+
+/* Property Image */
+.FilterSelect-property-image {
+    width: 100%;
+    height: auto;
+    max-height: 250px; /* Larger image size */
+    object-fit: cover; /* Make sure image covers the space */
+    border-radius: 10px 10px 0 0; /* Rounded top corners */
+}
+
+/* Card Body */
+.FilterSelect-card-body {
+    padding: 25px; /* Increased padding */
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.2); /* Black with 60% opacity */
+}
+
+.FilterSelect-card-title {
+    color: #DAA520; /* Dark Golden */
+    font-size: 22px;
+    margin-bottom: 15px;
+    font-weight: bold; /* Bolder title */
+}
+
+
+
+.FilterSelect-card-text {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #fff; /* Light text for better readability */
+    margin-bottom: 20px;
+}
+
+/* Button */
+.FilterSelect-btn-primary {
+    background-color: #DAA520; /* Dark Golden */
+    border-color: #DAA520;
+    color: white; /* White text for the button */
+    font-weight: bold; /* Bolder text for button */
+    padding: 10px 20px; /* More padding for a better click area */
+    border-radius: 5px; /* Rounded corners for the button */
+    text-transform: uppercase; /* Uppercase text for emphasis */
+    transition: background-color 0.3s ease; /* Smooth background transition */
+    text-decoration: none;
+}
+
+.FilterSelect-btn-primary:hover {
+    background-color: #c88e14; /* Slightly darker golden shade on hover */
+    border-color: #c88e14;
+}
+
+/* Golden Line */
+.FilterSelect-golden-line {
+    border: 2px solid #DAA520; /* Thin Golden Line */
+    width: 100%;
+    margin: 20px 0;
+}
+
+/* Bootstrap Row Adjustments */
+.FilterSelect-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.FilterSelect-order-md-2 {
+    order: 2;
+}
+
+/* For small screens */
+@media (max-width: 768px) {
+    .FilterSelect-property-row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .FilterSelect-col-md-6 {
+        max-width: 90%;
+    }
+}
+
+
+/* Property Types Section */
+.Hometype-container {
+    width: 95%;
+    padding: 60px 40px;
+     background-color: rgba(0, 0, 0, 0.35); /* Black with 60% opacity */
+    color: white;
+    margin-top: 50px;
+}
+
+/* Title and Description */
+.Hometype-text-content {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.Hometype-text-content h2 {
+    font-size: 40px;
+    font-weight: bold;
+    color: #DAA520; /* Dark Golden */
+}
+
+.Hometype-text-content p {
+    font-size: 20px;
+    line-height: 1.6;
+    
+}
+
+/* Flex Layout for Description and Card */
+.Hometype-property-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 55px; /* Space between rows */
+}
+
+/* Description Styling */
+.Hometype-property-description {
+    flex: 1;
+    font-size: 20px;
+    line-height: 1.6;
+    color: #fff;
+}
+
+
+.Hometype-property-description h3{
+ color: #DAA520;
+
+}
+
+/* Property Cards */
+.Hometype-homepropertlycard {
+    flex: 1;
+   background-color: rgba(0, 0, 0, 0.2); /* Black with 60% opacity */
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3); /* Deeper shadow */
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+/* Hover Effects for Cards */
+.Hometype-homepropertlycard:hover {
+    transform: translateY(-5px); /* Card lifts up slightly */
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5); /* Stronger shadow on hover */
+}
+
+/* Property Image */
+.Hometype-property-image {
+    width: 100%;
+    height: auto;
+    max-height: 250px; /* Larger image size */
+    object-fit: cover; /* Make sure image covers the space */
+    border-radius: 10px 10px 0 0; /* Rounded top corners */
+}
+
+/* Card Body */
+.Hometype-card-body {
+    padding: 25px; /* Increased padding */
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.2); /* Black with 60% opacity */
+}
+
+.Hometype-card-title {
+    color: #DAA520; /* Dark Golden */
+    font-size: 22px;
+    margin-bottom: 15px;
+    font-weight: bold; /* Bolder title */
+}
+
+
+
+.Hometype-card-text {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #fff; /* Light text for better readability */
+    margin-bottom: 20px;
+}
+
+/* Button */
+.Hometype-btn-primary {
+    background-color: #DAA520; /* Dark Golden */
+    border-color: #DAA520;
+    color: white; /* White text for the button */
+    font-weight: bold; /* Bolder text for button */
+    padding: 10px 20px; /* More padding for a better click area */
+    border-radius: 5px; /* Rounded corners for the button */
+    text-transform: uppercase; /* Uppercase text for emphasis */
+    transition: background-color 0.3s ease; /* Smooth background transition */
+    text-decoration: none;
+}
+
+.Hometype-btn-primary:hover {
+    background-color: #c88e14; /* Slightly darker golden shade on hover */
+    border-color: #c88e14;
+}
+
+/* Golden Line */
+.Hometype-golden-line {
+    border: 2px solid #DAA520; /* Thin Golden Line */
+    width: 100%;
+    margin: 20px 0;
+}
+
+/* Bootstrap Row Adjustments */
+.Hometype-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.Hometype-order-md-2 {
+    order: 2;
+}
+
+/* For small screens */
+@media (max-width: 768px) {
+    .Hometype-property-row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .Hometype-col-md-6 {
+        max-width: 90%;
+    }
+}
+
+
+/* User Reviews Section */
+.HomeReview-container {
+     background-color: rgba(0, 0, 0, 0.35); /* Black with 60% opacity */
+    padding: 80px 20px;
+    color: white;
+    text-align: center;
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 45px;
+}
+
+/* Main Title */
+.review-main-title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #DAA520; /* Golden */
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 70px;
+}
+
+/* Reviews Grid */
+.reviews-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    grid-template-rows: auto auto; /* Three rows */
+    gap: 30px;
+    max-width: 95%;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Center "Latest Reviews" Text in the Middle */
+.latest-reviews-text {
+    grid-column: 1 / 3; /* Span across both columns */
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    color: #DAA520;
+    margin: 20px 0;
+    align-self: center;
+}
+
+/* Single Review */
+.review {
+    background-color: rgba(0, 0, 0, 0.2); /* Black with 60% opacity */
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0px 5px 15px rgba(218, 165, 32, 0.3);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border: 2px solid rgba(218, 165, 32, 0.5);
+}
+
+/* Hover Effect */
+.review:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 20px rgba(218, 165, 32, 0.6);
+}
+
+/* Review Name */
+.review-name {
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 5px;
+}
+
+/* Review Location */
+.review-location {
+    font-size: 14px;
+    color: #ccc;
+    margin-bottom: 10px;
+}
+
+/* Star Rating */
+.stars {
+    font-size: 18px;
+    color: #DAA520;
+    margin-bottom: 10px;
+}
+
+/* Review Message */
+.review-message {
+    font-size: 16px;
+    color: #ddd;
+    line-height: 1.6;
+}
+
+/* More Button */
+.review-more-button-home {
+    background-color: #DAA520;
+    color: #1a1a1a;
+    font-weight: bold;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s;
+    text-transform: uppercase;
+}
+
+.review-more-button-home:hover {
+    background-color: #c69114;
+    color: white;
+}
+
+
+/* Modal Overlay - Initially Hidden */
+.review-modal-overlay-home {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+}
+
+/* Modal Box - Initially Hidden */
+.review-modal-home {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #222;
+    color: white;
+    padding: 30px;
+    width: 400px;
+    max-width: 90%;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(218, 165, 32, 0.4);
+    text-align: center;
+    z-index: 1001;
+}
+
+/* Modal Header */
+.review-modal-header-home {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* Modal Body */
+.review-modal-body-home {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #ddd;
+}
+
+/* Close Button - Now Properly Positioned & Initially Hidden */
+.review-close-button-home {
+    display: block;
+    margin: 20px auto 0;
+    background-color: #DAA520;
+    color: #1a1a1a;
+    font-weight: bold;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-transform: uppercase;
+}
+
+.review-close-button-home:hover {
+    background-color: #c69114;
+    color: white;
+}
+
+
+/* Arrange Reviews in Proper Grid */
+.latest-reviews-text { grid-column: 1 / 3; grid-row: 2; } /* Middle Centered */
+
+
+/* See All Reviews Button Container */
+.see-all-reviews-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* Button Styling */
+.see-all-reviews-button {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #DAA520;
+    color: #1a1a1a;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    text-transform: uppercase;
+}
+
+.see-all-reviews-button:hover {
+    background-color: #c69114;
+    color: white;
+}
+
+/* About Us Section Styling */
+.Aboutsection-container {
+    width: 95%;
+    margin: 40px auto 0; /* Increased margin-top */
+    padding: 60px 0;
+     background-color: rgba(0, 0, 0, 0.35); /* Black with 60% opacity */
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+   
+}
+
+/* Section Title */
+.Aboutsection-container .Aboutsection-title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #DAA520; /* Golden title */
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Layout Adjustments */
+.Aboutsection-container .row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+}
+
+/* Left Column - Overlapping Images */
+.Aboutimage-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Aboutfirst-image {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+    border: 6px solid #DAA520;
+}
+
+.Aboutsecond-image {
+    width: 340px;
+    height: 340px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: relative;
+    top: 60px;
+    left: -100px;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+    border: 6px solid #DAA520;
+}
+
+/* Right Column - Text Content */
+.Aboutsection-container .col-md-6 {
+    text-align: left;
+    width: 80%; /* Makes text cover 80% of the section */
+}
+
+/* Section Subtitles */
+.Aboutsection-subtitle {
+    font-size: 26px;
+    font-weight: bold;
+    color: #c69114;
+    margin-top: 60px;
+    margin-bottom: 12px;
+    position: relative;
+}
+
+/* Paragraph Text */
+.Aboutsection-container p {
+    font-size: 22px;
+    line-height: 1.8;
+    color: white;
+   
+}
+
+/* Values List */
+.about-values {
+    list-style: none;
+    padding-left: 0;
+}
+
+.about-values li {
+    font-size: 22px;
+    margin-bottom: 12px;
+    color: white;
+}
+
+.about-values li strong {
+    color: #DAA520;
+}
+
+/* Call to Action Button */
+.Aboutsection-container .btn-primary {
+    background-color: #c89d5b;
+    border: none;
+    padding: 14px 32px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+    color: black;
+    text-transform: uppercase;
+}
+
+.Aboutsection-container .btn-primary:hover {
+    background-color: #a87c3d;
+    color: white;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .Aboutsection-container .row {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .first-image,
+    .second-image {
+        position: static;
+        margin-bottom: 15px;
+    }
+
+    .Aboutsection-container .col-md-6 {
+        text-align: center;
+        width: 100%;
+    }
+}
+
+/* Footer Styling */
+.footer {
+    background-color: #121212;
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+/* Logo at the Top */
+.footer-logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.footer-logo img {
+    width: 250px; /* Adjust size as needed */
+    height: auto;
+}
+
+/* Footer Container */
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Footer Sections */
+.footer-section {
+    flex: 1;
+    padding: 15px;
+    min-width: 250px;
+}
+
+.pages, .social {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.footer-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: gold;
+}
+
+/* Links */
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin: 5px 0;
+     margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: gold;
+}
+
+.social-icons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    transform: translateY(-140px); /* Moves the icons up */
+}
+
+
+.social-icons a img {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s ease;
+}
+
+.social-icons a:hover img {
+    transform: scale(1.1);
+}
+
+/* Copyright */
+.footer-bottom {
+    background-color: #0d0d0d;
+    padding: 15px 0;
+    margin-top: 20px;
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 1rem;
+    color: #aaa;
+}
+
+.social-icon {
+    font-size: 30px;
+    color: white;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icon {
+    font-size: 30px;
+    color: white;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icon:hover {
+    color: gold;
+    transform: scale(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+
