@@ -44,8 +44,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class HomeController {
 	
-	@Autowired
-	private BCryptPasswordEncoder passwordEncoder;
 	
 	@Autowired
 	private UserRepository userRepository;
@@ -190,51 +188,7 @@ public class HomeController {
     
 	
 	
-	//Handler for registering user
-	@PostMapping("/do_register")
-	public String registerUser(@Valid @ModelAttribute("user") User user,BindingResult result1 ,@RequestParam(value="agreement",defaultValue ="false")boolean agreement,Model model,
-			HttpSession session) {
-		
-		try {
-		if(!agreement)
-		{
-			System.out.println("You have not agreed the terms and conditions");
-			throw new Exception("You have not agreed the terms and conditions");
-		}
-		
-		//Implementing Validation
-		if(result1.hasErrors())
-		{
-			System.out.println("ERROR"+result1.toString());
-			model.addAttribute("user", user);
-			return "signup";
-		}
-		
-		user.setRole("ROLE_USER");
-		user.setEnabled(true);
-		user.setImageUrl("default.png");
-		user.setPassword(passwordEncoder.encode(user.getPassword()));
-		
-		
-		
-		System.out.println("Agreement" +agreement);
-		System.out.println("USER" +user);
-		
-		User result =this.userRepository.save(user);
-		
-		model.addAttribute("message","Successfully Registered");
-		
-		}catch(Exception e){
-			
-			e.printStackTrace();
-			model.addAttribute("user",user);
-			model.addAttribute("errorMessage","Something went wrong! "+ e.getMessage());
-			
-		}
-		
-		
-		return "signup";
-	}
+	
 	
 	 @GetMapping("/submitReview")
 	    public String showReviews(Model model) {
